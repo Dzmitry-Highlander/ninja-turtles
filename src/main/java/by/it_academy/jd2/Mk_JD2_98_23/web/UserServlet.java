@@ -34,13 +34,13 @@ public class UserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String firstName = req.getParameter(FIRSTNAME_PARAM_NAME);
         String lastName = req.getParameter(LASTNAME_PARAM_NAME);
-        String username = req.getParameter(USERNAME_PARAM_NAME);
+        String userName = req.getParameter(USERNAME_PARAM_NAME);
         String password = req.getParameter(PASSWORD_PARAM_NAME);
         String dateOfBirth = req.getParameter(DATE_OF_BIRTH_PARAM_NAME);
 
         try {
-            if (firstName == null || lastName == null || username == null || password == null) {
-            UserCreateDTO savedUser = new UserCreateDTO(firstName, lastName, username, password,
+            if (firstName == null || lastName == null || userName == null || password == null) {
+            UserCreateDTO savedUser = new UserCreateDTO(firstName, lastName, userName, password,
                     LocalDate.parse(dateOfBirth), LocalDateTime.now(), new ArrayList<>());
 
             savedUser.addRole(userService.defaultRole());
