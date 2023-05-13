@@ -17,7 +17,8 @@ public class UserDTO {
     public UserDTO() {
     }
 
-    public UserDTO(int id, String firstName, String lastName, String username, String password, LocalDateTime dateOfBirth, LocalDateTime registrationDate, ArrayList<UserRoleDTO> roles) {
+    public UserDTO(int id, String firstName, String lastName, String username, String password,
+                   LocalDateTime dateOfBirth, LocalDateTime registrationDate, ArrayList<UserRoleDTO> roles) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
