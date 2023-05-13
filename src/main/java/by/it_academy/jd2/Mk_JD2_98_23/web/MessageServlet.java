@@ -56,32 +56,26 @@ public class MessageServlet extends HttpServlet {
         }
         UserDTO currentUser = (UserDTO) session.getAttribute(USER_SESSION_ATTRIBUTE_NAME);
 
-        // Getting data from a request
         String toUsername = req.getParameter(TO_PARAM_NAME);
         String messageText = req.getParameter(TEXT_PARAM_NAME);
 
-        // Checking for empty fields
         if (toUsername == null || toUsername.isEmpty() || messageText == null || messageText.isEmpty()) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "To or text fields are empty");
             return;
         }
 
-        // Checking if the recipient exists
         UserDTO recipient = userService.findByUsername(toUsername);
         if (recipient == null) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Recipient with such username does not exist");
             return;
         }
 
-        // Creating and saving a message
         MessageCreateDTO messageToSave = new MessageCreateDTO(currentUser, recipient, messageText);
         messageService.save(messageToSave);
 
-        // Sending a response to the client
         resp.setStatus(HttpServletResponse.SC_CREATED); // HTTP status 201
         resp.getWriter().write("");
 
-        // Displaying data about stored users
         DateTimeFormatter dTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
         for (MessageDTO message : messageService.get()) {
             String fDateTime = message.getDateTime().format(dTimeFormatter);
