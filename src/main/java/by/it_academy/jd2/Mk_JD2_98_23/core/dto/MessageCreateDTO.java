@@ -2,7 +2,6 @@ package by.it_academy.jd2.Mk_JD2_98_23.core.dto;
 
 
 public class MessageCreateDTO {
-
     private UserDTO from;
     private UserDTO to;
     private String text;
@@ -12,7 +11,6 @@ public class MessageCreateDTO {
         this.to = to;
         this.text = text;
     }
-
 
     public UserDTO getFrom() {
         return from;
