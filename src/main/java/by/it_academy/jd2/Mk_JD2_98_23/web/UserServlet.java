@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class UserServlet extends HttpServlet {
     private static final String FIRSTNAME_PARAM_NAME = "firstName";
     private static final String LASTNAME_PARAM_NAME = "lastName";
-    private static final String USERNAME_PARAM_NAME = "username";
+    private static final String USERNAME_PARAM_NAME = "userName";
     private static final String PASSWORD_PARAM_NAME = "password";
     private static final String DATE_OF_BIRTH_PARAM_NAME = "dateOfBirth";
     private final IUserService userService;
