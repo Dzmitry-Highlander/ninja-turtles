@@ -13,7 +13,8 @@ public class UserCreateDTO {
     private LocalDateTime registrationDate;
     private ArrayList<UserRoleDTO> roles;
 
-    public UserCreateDTO(String firstName, String lastName, String username, String password, LocalDateTime dateOfBirth, LocalDateTime registrationDate, ArrayList<UserRoleDTO> role) {
+    public UserCreateDTO(String firstName, String lastName, String username, String password,
+                         LocalDateTime dateOfBirth, LocalDateTime registrationDate, ArrayList<UserRoleDTO> role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
