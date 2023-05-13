@@ -22,7 +22,7 @@ import java.util.Objects;
 public class UserServlet extends HttpServlet {
     private static final String FIRSTNAME_PARAM_NAME = "firstName";
     private static final String LASTNAME_PARAM_NAME = "lastName";
-    private static final String USERNAME_PARAM_NAME = "userName";
+    private static final String USERNAME_PARAM_NAME = "username";
     private static final String PASSWORD_PARAM_NAME = "password";
     private static final String DATE_OF_BIRTH_PARAM_NAME = "dateOfBirth";
     private final IUserService userService;
@@ -35,14 +35,14 @@ public class UserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String firstName = req.getParameter(FIRSTNAME_PARAM_NAME);
         String lastName = req.getParameter(LASTNAME_PARAM_NAME);
-        String userName = req.getParameter(USERNAME_PARAM_NAME);
+        String username = req.getParameter(USERNAME_PARAM_NAME);
         String password = req.getParameter(PASSWORD_PARAM_NAME);
         String dateOfBirth = req.getParameter(DATE_OF_BIRTH_PARAM_NAME);
 
         try {
             if (!Objects.equals(firstName, "") || !Objects.equals(lastName, "")
-                    || !Objects.equals(userName, "") || !Objects.equals(password, "")) {
-            UserCreateDTO savedUser = new UserCreateDTO(firstName, lastName, userName, password,
+                    || !Objects.equals(username, "") || !Objects.equals(password, "")) {
+            UserCreateDTO savedUser = new UserCreateDTO(firstName, lastName, username, password,
                     LocalDate.parse(dateOfBirth), LocalDateTime.now(), new ArrayList<>());
 
             savedUser.addRole(userService.defaultRole());
