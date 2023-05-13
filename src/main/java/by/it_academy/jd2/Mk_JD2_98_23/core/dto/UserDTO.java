@@ -18,12 +18,12 @@ public class UserDTO {
     public UserDTO() {
     }
 
-    public UserDTO(int id, String firstName, String lastName, String username, String password,
+    public UserDTO(int id, String firstName, String lastName, String userName, String password,
                    LocalDate dateOfBirth, LocalDateTime registrationDate, ArrayList<UserRoleDTO> roles) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userName = username;
+        this.userName = userName;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
         this.registrationDate = registrationDate;
