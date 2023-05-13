@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class MessageMemoryDao implements IMessageDao {
-
     private final Map<Integer, MessageDTO> messages = new ConcurrentHashMap<>();
 
     public MessageMemoryDao() {
@@ -19,7 +18,6 @@ public class MessageMemoryDao implements IMessageDao {
     public List<MessageDTO> get() {
         return new ArrayList<>(this.messages.values());
     }
-
 
     @Override
     public MessageDTO get(int id) {

@@ -14,9 +14,9 @@ public class UserMemoryDao implements IUserDao {
     private final Map<Integer, UserDTO> users = new ConcurrentHashMap<>();
 
     public UserMemoryDao() {
-
         {
-            UserDTO dto = new UserDTO(1, "admin", "admin", "admin", "admin", LocalDateTime.now(), LocalDateTime.now(), new ArrayList<>());
+            UserDTO dto = new UserDTO(1, "admin", "admin", "admin", "admin",
+                    LocalDateTime.now(), LocalDateTime.now(), new ArrayList<>());
             users.put(dto.getId(), dto);
         }
     }
@@ -43,6 +43,7 @@ public class UserMemoryDao implements IUserDao {
                 return user;
             }
         }
+
         return null;
     }
 
