@@ -36,9 +36,9 @@ public class UserServlet extends HttpServlet {
         String username = req.getParameter(USERNAME_PARAM_NAME);
         String password = req.getParameter(PASSWORD_PARAM_NAME);
         LocalDate dateOfBirth = LocalDate.parse(req.getParameter(DATE_OF_BIRTH_PARAM_NAME));
+        DateTimeFormatter dTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
         UserCreateDTO savedUser = new UserCreateDTO(firstName, lastName, username, password, dateOfBirth.atStartOfDay(),
                 LocalDateTime.now(), new ArrayList<>());
-        DateTimeFormatter dTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
 
         savedUser.addRole(userService.defaultRole());
         userService.save(savedUser);
