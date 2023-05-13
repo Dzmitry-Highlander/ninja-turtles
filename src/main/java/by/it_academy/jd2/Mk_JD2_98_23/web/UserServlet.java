@@ -36,23 +36,11 @@ public class UserServlet extends HttpServlet {
         String username = req.getParameter(USERNAME_PARAM_NAME);
         String password = req.getParameter(PASSWORD_PARAM_NAME);
         LocalDate dateOfBirth = LocalDate.parse(req.getParameter(DATE_OF_BIRTH_PARAM_NAME));
-        DateTimeFormatter dTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
         UserCreateDTO savedUser = new UserCreateDTO(firstName, lastName, username, password, dateOfBirth.atStartOfDay(),
                 LocalDateTime.now(), new ArrayList<>());
 
         savedUser.addRole(userService.defaultRole());
         userService.save(savedUser);
-
-        for (UserDTO user : userService.get()) {
-            String fDateOfBirth = user.getDateOfBirth().format(dTimeFormatter);
-            String fRegistrationDate = user.getRegistrationDate().format(dTimeFormatter);
-
-            resp.getWriter().write("userName: " + user.getUserName() + ", password: " + user.getPassword()
-                    + ", firstName: " + user.getFirstName() + ",  lastName: " + user.getLastName()
-                    + ", DateOfBirth: "+ fDateOfBirth + ", RegistrationDate: "+ fRegistrationDate + ", role: "
-                    + user.getRoles() + "\n");
-            resp.getWriter().write("\n");
-        }
     }
 }
 
