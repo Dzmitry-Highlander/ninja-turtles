@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.OptionalInt;
 
 public class MessageService implements IMessageService {
-    private  IMessageDao messageDao;
+    private final IMessageDao messageDao;
     private IUserService userService;
 
     public MessageService(IMessageDao messageDao) {
