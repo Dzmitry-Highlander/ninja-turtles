@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
         UserDTO user = userService.validate(username, password);
         HttpSession session = req.getSession(true);
 
-        if (!Objects.equals(username, "") || !Objects.equals(password, "")) {
+        if (Objects.equals(username, "") || Objects.equals(password, "")) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Username or password is empty");
             return;
         }
