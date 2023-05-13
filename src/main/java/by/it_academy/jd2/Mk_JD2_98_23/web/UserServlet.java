@@ -2,6 +2,7 @@ package by.it_academy.jd2.Mk_JD2_98_23.web;
 
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.UserCreateDTO;
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.UserDTO;
+import by.it_academy.jd2.Mk_JD2_98_23.exception.UserCreateException;
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IUserService;
 import by.it_academy.jd2.Mk_JD2_98_23.service.factory.UserServiceFactory;
 import jakarta.servlet.ServletException;
@@ -36,11 +37,22 @@ public class UserServlet extends HttpServlet {
         String username = req.getParameter(USERNAME_PARAM_NAME);
         String password = req.getParameter(PASSWORD_PARAM_NAME);
         LocalDate dateOfBirth = LocalDate.parse(req.getParameter(DATE_OF_BIRTH_PARAM_NAME));
-        UserCreateDTO savedUser = new UserCreateDTO(firstName, lastName, username, password, dateOfBirth.atStartOfDay(),
-                LocalDateTime.now(), new ArrayList<>());
 
-        savedUser.addRole(userService.defaultRole());
-        userService.save(savedUser);
+        try {
+            if (firstName == null || lastName == null || username == null || password == null) {
+            UserCreateDTO savedUser = new UserCreateDTO(firstName, lastName, username, password,
+                    dateOfBirth.atStartOfDay(), LocalDateTime.now(), new ArrayList<>());
+
+            savedUser.addRole(userService.defaultRole());
+            userService.save(savedUser);
+            } else {
+                throw new UserCreateException();
+            }
+        } catch (Exception e) {
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "All fields must be filled!");
+
+            e.printStackTrace();
+        }
     }
 }
 
