@@ -18,6 +18,7 @@ public class UserRoleServiceFactory {
                 }
             }
         }
+
         return instance;
     }
 }

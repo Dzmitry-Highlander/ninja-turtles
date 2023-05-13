@@ -17,8 +17,8 @@ public class MessageServiceFactory {
                     instance =new MessageService(MessageDaoFactory.getInstance());
                 }
             }
-
         }
+
         return instance;
     }
 }
