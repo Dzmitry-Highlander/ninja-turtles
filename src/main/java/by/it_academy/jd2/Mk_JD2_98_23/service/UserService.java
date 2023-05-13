@@ -27,7 +27,9 @@ public class UserService implements IUserService {
 
     public UserDTO validate(String username, String password) {
         UserDTO user = userDao.findByUsername(username);
+
         if (user == null) {
+
             return null;
         }
 
@@ -96,6 +98,7 @@ public class UserService implements IUserService {
 
         return null;
     }
+
     @Override
     public List<String> getRoleNames(int userId) {
         UserDTO user = userDao.get(userId);
