@@ -42,6 +42,7 @@ public class UserMemoryDao implements IUserDao {
     public UserDTO findByUsername(String username) {
         for (UserDTO user : this.users.values()) {
             if (user.getUserName().equals(username)) {
+
                 return user;
             }
         }
