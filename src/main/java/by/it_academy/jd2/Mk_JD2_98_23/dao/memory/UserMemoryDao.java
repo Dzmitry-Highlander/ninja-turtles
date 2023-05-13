@@ -4,6 +4,7 @@ import by.it_academy.jd2.Mk_JD2_98_23.core.dto.UserDTO;
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.UserRoleDTO;
 import by.it_academy.jd2.Mk_JD2_98_23.dao.api.IUserDao;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ public class UserMemoryDao implements IUserDao {
     public UserMemoryDao() {
         {
             UserDTO dto = new UserDTO(1, "admin", "admin", "admin", "admin",
-                    LocalDateTime.now(), LocalDateTime.now(), new ArrayList<>());
+                    LocalDate.now(), LocalDateTime.now(), new ArrayList<>());
             users.put(dto.getId(), dto);
         }
     }
