@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
         UserDTO user = userService.validate(username, password);
         HttpSession session = req.getSession(true);
 
-        if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
+        if (username == null || password == null) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Username or password is empty");
             return;
         }
