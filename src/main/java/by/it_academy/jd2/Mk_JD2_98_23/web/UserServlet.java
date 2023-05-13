@@ -46,6 +46,7 @@ public class UserServlet extends HttpServlet {
         for (UserDTO user : userService.get()) {
             String fDateOfBirth = user.getDateOfBirth().format(dTimeFormatter);
             String fRegistrationDate = user.getRegistrationDate().format(dTimeFormatter);
+
             resp.getWriter().write("userName: " + user.getUserName() + ", password: " + user.getPassword()
                     + ", firstName: " + user.getFirstName() + ",  lastName: " + user.getLastName()
                     + ", DateOfBirth: "+ fDateOfBirth + ", RegistrationDate: "+ fRegistrationDate + ", role: "
