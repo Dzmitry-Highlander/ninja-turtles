@@ -1,6 +1,7 @@
 package by.it_academy.jd2.Mk_JD2_98_23.web;
 
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.UserDTO;
+import by.it_academy.jd2.Mk_JD2_98_23.exception.LoginException;
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IUserService;
 import by.it_academy.jd2.Mk_JD2_98_23.service.factory.UserServiceFactory;
 import jakarta.servlet.ServletException;
@@ -30,17 +31,20 @@ public class LoginServlet extends HttpServlet {
         UserDTO user = userService.validate(username, password);
         HttpSession session = req.getSession(true);
 
+        try {
         if (Objects.equals(username, "") || Objects.equals(password, "")) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Username or password is empty");
             return;
         }
         if (user == null) {
-            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid username or password");
-            return;
+            throw new LoginException();
         }
 
         session.setAttribute(USER_SESSION_ATTRIBUTE_NAME, user);
         resp.setStatus(HttpServletResponse.SC_OK);
         resp.getWriter().write("Authorization was successful!");
+        } catch (Exception e) {
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid username or password");
+        }
     }
 }
