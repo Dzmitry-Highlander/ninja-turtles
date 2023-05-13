@@ -31,20 +31,18 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Getting data from a request
         String firstName = req.getParameter(FIRSTNAME_PARAM_NAME);
         String lastName = req.getParameter(LASTNAME_PARAM_NAME);
         String username = req.getParameter(USERNAME_PARAM_NAME);
         String password = req.getParameter(PASSWORD_PARAM_NAME);
         LocalDate dateOfBirth = LocalDate.parse(req.getParameter(DATE_OF_BIRTH_PARAM_NAME));
+        UserCreateDTO savedUser = new UserCreateDTO(firstName, lastName, username, password, dateOfBirth.atStartOfDay(),
+                LocalDateTime.now(), new ArrayList<>());
+        DateTimeFormatter dTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
 
-        // Create and save and add  default role a user
-        UserCreateDTO savedUser = new UserCreateDTO(firstName, lastName, username, password, dateOfBirth.atStartOfDay(), LocalDateTime.now(), new ArrayList<>());
         savedUser.addRole(userService.defaultRole());
         userService.save(savedUser);
 
-        // Displaying data about stored users
-        DateTimeFormatter dTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
         for (UserDTO user : userService.get()) {
             String fDateOfBirth = user.getDateOfBirth().format(dTimeFormatter);
             String fRegistrationDate = user.getRegistrationDate().format(dTimeFormatter);
