@@ -15,7 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.tomcat.url>http://192.168.1.100:3333/manager/text</maven.tomcat.url>
         <maven.tomcat.server>TomcatServer8</maven.tomcat.server>
-        <maven.tomcat.path>/${project.build.finalName}</maven.tomcat.path>
+        <maven.tomcat.path>chat</maven.tomcat.path>
     </properties>
 
     <dependencies>
