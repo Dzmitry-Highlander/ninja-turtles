@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 @WebServlet("/api/user")
 public class UserServlet extends HttpServlet {
+    //TODO first name and last name are mandatory
     private static final String FIRSTNAME_PARAM_NAME = "firstName";
     private static final String LASTNAME_PARAM_NAME = "lastName";
     private static final String USERNAME_PARAM_NAME = "username";
