@@ -13,10 +13,8 @@ import java.util.List;
 import java.util.OptionalInt;
 
 public class MessageService implements IMessageService {
-
     private  IMessageDao messageDao;
     private IUserService userService;
-
 
     public MessageService(IMessageDao messageDao) {
         this.messageDao = messageDao;
@@ -58,18 +56,18 @@ public class MessageService implements IMessageService {
     @Override
     public List<MessageDTO> getMessagesForUser(int userId) {
         List<MessageDTO> messages = new ArrayList<>();
-        // Get user object by id
         UserDTO user = userService.get(userId);
+        List<MessageDTO> allMessages = messageDao.get();
+
         if (user == null) {
             return messages;
         }
-        // Get a list of all messages from DAO
-        List<MessageDTO> allMessages = messageDao.get();
         for (MessageDTO message : allMessages) {
             if (message.getFrom().equals(user) || message.getTo().equals(user)) {
                 messages.add(message);
             }
         }
+
         return messages;
     }
 }
