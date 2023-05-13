@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Objects;
 
 @WebServlet("/api/user")
 public class UserServlet extends HttpServlet {
@@ -39,7 +40,8 @@ public class UserServlet extends HttpServlet {
         String dateOfBirth = req.getParameter(DATE_OF_BIRTH_PARAM_NAME);
 
         try {
-            if (firstName == null || lastName == null || userName == null || password == null) {
+            if (!Objects.equals(firstName, "") || !Objects.equals(lastName, "")
+                    || !Objects.equals(userName, "") || !Objects.equals(password, "")) {
             UserCreateDTO savedUser = new UserCreateDTO(firstName, lastName, userName, password,
                     LocalDate.parse(dateOfBirth), LocalDateTime.now(), new ArrayList<>());
 
