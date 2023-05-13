@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Objects;
 
 @WebServlet("/api/login")
 public class LoginServlet extends HttpServlet {
@@ -29,7 +30,7 @@ public class LoginServlet extends HttpServlet {
         UserDTO user = userService.validate(username, password);
         HttpSession session = req.getSession(true);
 
-        if (username == null || password == null) {
+        if (!Objects.equals(username, "") || !Objects.equals(password, "")) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Username or password is empty");
             return;
         }
