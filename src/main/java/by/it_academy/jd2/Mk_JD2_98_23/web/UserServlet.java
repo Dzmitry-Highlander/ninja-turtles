@@ -25,11 +25,9 @@ public class UserServlet extends HttpServlet {
     private static final String DATE_OF_BIRTH_PARAM_NAME = "dateOfBirth";
     private final IUserService userService;
 
-
     public UserServlet() {
         this.userService = UserServiceFactory.getInstance();
     }
-
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
