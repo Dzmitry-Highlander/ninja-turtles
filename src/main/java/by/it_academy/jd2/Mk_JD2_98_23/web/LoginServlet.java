@@ -33,8 +33,7 @@ public class LoginServlet extends HttpServlet {
 
         try {
         if (Objects.equals(username, "") || Objects.equals(password, "")) {
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Username or password is empty");
-            return;
+            throw new ServletException("Username or password is empty!");
         }
         if (user == null) {
             throw new LoginException();
@@ -44,7 +43,7 @@ public class LoginServlet extends HttpServlet {
         resp.setStatus(HttpServletResponse.SC_OK);
         resp.getWriter().write("Authorization was successful!");
         } catch (Exception e) {
-            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid username or password");
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid username or password!");
 
             e.printStackTrace();
         }
