@@ -26,13 +26,11 @@ public class UserService implements IUserService {
     }
 
     public UserDTO validate(String username, String password) {
-        // Check if there is a user with this login in the repository
         UserDTO user = userDao.findByUsername(username);
         if (user == null) {
             return null;
         }
 
-        // Checking the correctness of the entered password
         if (!user.getPassword().equals(password)) {
             return null;
         }
@@ -100,7 +98,7 @@ public class UserService implements IUserService {
         UserDTO user = userDao.get(userId);
         if (user != null) {
             List<UserRoleDTO> roles = user.getRoles();
-            return roles.stream().map(role -> role.getName().toString()).collect(Collectors.toList());
+            return roles.stream().map(UserRoleDTO::getName).collect(Collectors.toList());
         }
         return null;
     }
