@@ -37,6 +37,7 @@ public class LoginServlet extends HttpServlet {
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid username or password");
             return;
         }
+
         session.setAttribute(USER_SESSION_ATTRIBUTE_NAME, user);
         resp.setStatus(HttpServletResponse.SC_OK);
         resp.getWriter().write("Authorization was successful!");
