@@ -36,12 +36,12 @@ public class UserServlet extends HttpServlet {
         String lastName = req.getParameter(LASTNAME_PARAM_NAME);
         String username = req.getParameter(USERNAME_PARAM_NAME);
         String password = req.getParameter(PASSWORD_PARAM_NAME);
-        LocalDate dateOfBirth = LocalDate.parse(req.getParameter(DATE_OF_BIRTH_PARAM_NAME));
+        String dateOfBirth = req.getParameter(DATE_OF_BIRTH_PARAM_NAME);
 
         try {
             if (firstName == null || lastName == null || username == null || password == null) {
             UserCreateDTO savedUser = new UserCreateDTO(firstName, lastName, username, password,
-                    dateOfBirth.atStartOfDay(), LocalDateTime.now(), new ArrayList<>());
+                    LocalDate.parse(dateOfBirth), LocalDateTime.now(), new ArrayList<>());
 
             savedUser.addRole(userService.defaultRole());
             userService.save(savedUser);
