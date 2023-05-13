@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface IMessageService extends ICRUDService <MessageDTO, MessageCreateDTO>{
     List<MessageDTO> getMessagesForUser(int userId);
+
     void setService(IUserService userService);
 }

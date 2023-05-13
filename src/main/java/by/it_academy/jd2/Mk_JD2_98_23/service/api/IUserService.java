@@ -9,17 +9,18 @@ import java.util.List;
 
 public interface IUserService extends ICRUDService<UserDTO, UserCreateDTO> {
     void setService(IUserRoleDao userRoleDao);
+
     UserDTO validate(String username, String password);
 
     UserDTO findByUsername(String username);
 
     UserRoleDTO defaultRole();
 
-    public void addRole(int userId, int roleId);
+    void addRole(int userId, int roleId);
 
-    public void removeRole(int userId, int roleId);
+    void removeRole(int userId, int roleId);
 
-    public List<Integer> getRoleIds(int userId);
+    List<Integer> getRoleIds(int userId);
 
-    public List<String> getRoleNames(int userId);
+    List<String> getRoleNames(int userId);
 }
