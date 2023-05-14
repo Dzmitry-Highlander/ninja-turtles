@@ -4,4 +4,8 @@ public class UserCreateException extends Exception {
     public UserCreateException() {
         super("All fields must be filled!");
     }
+
+    public UserCreateException(String message) {
+        super(message);
+    }
 }

@@ -1,6 +1,7 @@
 package by.it_academy.jd2.Mk_JD2_98_23.core.dto;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -10,18 +11,19 @@ public class UserDTO {
     private String lastName;
     private String userName;
     private String password;
-    private LocalDateTime dateOfBirth;
+    private LocalDate dateOfBirth;
     private LocalDateTime registrationDate;
     private ArrayList<UserRoleDTO> roles;
 
     public UserDTO() {
     }
 
-    public UserDTO(int id, String firstName, String lastName, String username, String password, LocalDateTime dateOfBirth, LocalDateTime registrationDate, ArrayList<UserRoleDTO> roles) {
+    public UserDTO(int id, String firstName, String lastName, String userName, String password,
+                   LocalDate dateOfBirth, LocalDateTime registrationDate, ArrayList<UserRoleDTO> roles) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userName = username;
+        this.userName = userName;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
         this.registrationDate = registrationDate;
@@ -68,11 +70,11 @@ public class UserDTO {
         this.password = password;
     }
 
-    public LocalDateTime getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDateTime dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

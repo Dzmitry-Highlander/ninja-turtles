@@ -12,8 +12,8 @@ public class EncodingFilter implements Filter {
     private String encoding;
 
     public void init(FilterConfig config) throws ServletException {
-
         encoding = config.getInitParameter("encoding");
+
         if (encoding == null) {
             encoding = "UTF-8";
         }
@@ -23,14 +23,8 @@ public class EncodingFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
 
-
         request.setCharacterEncoding(encoding);
         response.setCharacterEncoding(encoding);
-
-
         chain.doFilter(request, response);
-    }
-
-    public void destroy() {
     }
 }

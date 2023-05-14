@@ -4,6 +4,7 @@ import by.it_academy.jd2.Mk_JD2_98_23.core.dto.UserDTO;
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.UserRoleDTO;
 import by.it_academy.jd2.Mk_JD2_98_23.dao.api.IUserDao;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +15,10 @@ public class UserMemoryDao implements IUserDao {
     private final Map<Integer, UserDTO> users = new ConcurrentHashMap<>();
 
     public UserMemoryDao() {
-
         {
-            UserDTO dto = new UserDTO(1, "admin", "admin", "admin", "admin", LocalDateTime.now(), LocalDateTime.now(), new ArrayList<>());
+            UserDTO dto = new UserDTO(1, "admin", "admin", "admin", "admin",
+                    LocalDate.now(), LocalDateTime.now(), new ArrayList<>());
+
             users.put(dto.getId(), dto);
         }
     }
@@ -40,9 +42,11 @@ public class UserMemoryDao implements IUserDao {
     public UserDTO findByUsername(String username) {
         for (UserDTO user : this.users.values()) {
             if (user.getUserName().equals(username)) {
+
                 return user;
             }
         }
+
         return null;
     }
 

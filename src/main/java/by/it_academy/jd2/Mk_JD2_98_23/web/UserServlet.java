@@ -2,6 +2,7 @@ package by.it_academy.jd2.Mk_JD2_98_23.web;
 
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.UserCreateDTO;
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.UserDTO;
+import by.it_academy.jd2.Mk_JD2_98_23.exception.UserCreateException;
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IUserService;
 import by.it_academy.jd2.Mk_JD2_98_23.service.factory.UserServiceFactory;
 import jakarta.servlet.ServletException;
@@ -15,10 +16,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Objects;
 
 @WebServlet("/api/user")
 public class UserServlet extends HttpServlet {
-    //TODO first name and last name are mandatory
     private static final String FIRSTNAME_PARAM_NAME = "firstName";
     private static final String LASTNAME_PARAM_NAME = "lastName";
     private static final String USERNAME_PARAM_NAME = "username";
@@ -36,22 +37,23 @@ public class UserServlet extends HttpServlet {
         String lastName = req.getParameter(LASTNAME_PARAM_NAME);
         String username = req.getParameter(USERNAME_PARAM_NAME);
         String password = req.getParameter(PASSWORD_PARAM_NAME);
-        LocalDate dateOfBirth = LocalDate.parse(req.getParameter(DATE_OF_BIRTH_PARAM_NAME));
-        UserCreateDTO savedUser = new UserCreateDTO(firstName, lastName, username, password, dateOfBirth.atStartOfDay(),
-                LocalDateTime.now(), new ArrayList<>());
-        DateTimeFormatter dTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
+        String dateOfBirth = req.getParameter(DATE_OF_BIRTH_PARAM_NAME);
 
-        savedUser.addRole(userService.defaultRole());
-        userService.save(savedUser);
+        try {
+            if (!Objects.equals(firstName, "") || !Objects.equals(lastName, "")
+                    || !Objects.equals(username, "") || !Objects.equals(password, "")) {
+            UserCreateDTO savedUser = new UserCreateDTO(firstName, lastName, username, password,
+                    LocalDate.parse(dateOfBirth), LocalDateTime.now(), new ArrayList<>());
 
-        for (UserDTO user : userService.get()) {
-            String fDateOfBirth = user.getDateOfBirth().format(dTimeFormatter);
-            String fRegistrationDate = user.getRegistrationDate().format(dTimeFormatter);
-            resp.getWriter().write("userName: " + user.getUserName() + ", password: " + user.getPassword()
-                    + ", firstName: " + user.getFirstName() + ",  lastName: " + user.getLastName()
-                    + ", DateOfBirth: "+ fDateOfBirth + ", RegistrationDate: "+ fRegistrationDate + ", role: "
-                    + user.getRoles() + "\n");
-            resp.getWriter().write("\n");
+            savedUser.addRole(userService.defaultRole());
+            userService.save(savedUser);
+            } else {
+                throw new UserCreateException();
+            }
+        } catch (Exception e) {
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
+
+            e.printStackTrace();
         }
     }
 }

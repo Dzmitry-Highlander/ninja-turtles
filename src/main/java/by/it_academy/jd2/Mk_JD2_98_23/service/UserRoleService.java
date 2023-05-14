@@ -8,13 +8,11 @@ import by.it_academy.jd2.Mk_JD2_98_23.service.api.IUserRoleService;
 import java.util.List;
 
 public class UserRoleService implements IUserRoleService {
-
     private final IUserRoleDao userRoleDao;
 
     public UserRoleService(IUserRoleDao userRoleDao) {
         this.userRoleDao = userRoleDao;
     }
-
 
     @Override
     public List<UserRoleDTO> get() {

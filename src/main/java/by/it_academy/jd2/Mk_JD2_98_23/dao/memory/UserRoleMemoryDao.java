@@ -20,7 +20,6 @@ public class UserRoleMemoryDao implements IUserRoleDao {
             UserRoleDTO dto = new UserRoleDTO(2, "USER");
             role.put(dto.getId(), dto);
         }
-
     }
 
     @Override
@@ -36,6 +35,7 @@ public class UserRoleMemoryDao implements IUserRoleDao {
     @Override
     public UserRoleDTO save(UserRoleDTO item) {
         this.role.put(item.getId(), item);
+
         return item;
     }
 

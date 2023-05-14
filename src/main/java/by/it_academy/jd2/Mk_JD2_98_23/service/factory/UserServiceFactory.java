@@ -18,8 +18,8 @@ public class UserServiceFactory {
                     instance =new UserService(UserDaoFactory.getInstance(), UserRoleDaoFactory.getInstance());
                 }
             }
-
         }
+
         return instance;
     }
 }
