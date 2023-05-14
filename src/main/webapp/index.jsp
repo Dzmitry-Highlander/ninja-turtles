@@ -8,5 +8,6 @@
 </head>
 
 <body>
+    <h1>Welcome to NinjaChat</h1>
 </body>
 </html>

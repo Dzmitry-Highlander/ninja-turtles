@@ -44,8 +44,8 @@ public class LoginServlet extends HttpServlet {
         resp.getWriter().write("Authorization was successful!");
         } catch (Exception e) {
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
-
-            e.printStackTrace();
         }
+
+        req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 }

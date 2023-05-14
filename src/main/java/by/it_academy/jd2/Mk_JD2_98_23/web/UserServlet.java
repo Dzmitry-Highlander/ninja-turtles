@@ -54,8 +54,6 @@ public class UserServlet extends HttpServlet {
             }
         } catch (Exception e) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
-
-            e.printStackTrace();
         }
     }
 }
