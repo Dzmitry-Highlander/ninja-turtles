@@ -22,7 +22,7 @@
 </head>
 
 <body>
-<form class="form-horizontal" action="/M-JD2-98-23-0.0.0-SNAPSHOT/api/login" method="POST">
+<form class="form-horizontal" action="/NinjaChat-1.0.0/api/login" method="POST">
 <fieldset>
 
 <legend>Authorization</legend>
