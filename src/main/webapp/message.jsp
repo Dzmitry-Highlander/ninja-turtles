@@ -9,9 +9,9 @@
     <h1>Send Message</h1>
     <form action="/Mk-JD2-98-23-0.0.0-SNAPSHOT/api/message" method="post">
         <label for="to">To:</label>
-        <input type="text" id="toUsername" name="toUsername"><br><br>
+        <input type="text" id="to" name="to"><br><br>
         <label for="text">Text:</label>
-        <textarea id="messageText" name="messageText"></textarea><br><br>
+        <textarea id="text" name="text"></textarea><br><br>
         <input type="submit" value="Send">
     </form>
 </body>

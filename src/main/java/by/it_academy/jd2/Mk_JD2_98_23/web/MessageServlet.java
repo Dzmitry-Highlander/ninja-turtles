@@ -79,7 +79,7 @@ public class MessageServlet extends HttpServlet {
         DateTimeFormatter dTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
         for (MessageDTO message : messageService.get()) {
             String fDateTime = message.getDateTime().format(dTimeFormatter);
-            resp.getWriter().write("Text: " + message.getText() + ", From: " + message.getFrom() + ", To: " + message.getTo() + ",  DateTime: " + fDateTime);
+            resp.getWriter().write("Text: " + message.getText() + ", From: " + message.getFrom().getUserName() + ", To: " + message.getTo().getUserName() + ",  DateTime: " + fDateTime);
             resp.getWriter().write("\n");
         }
     }
