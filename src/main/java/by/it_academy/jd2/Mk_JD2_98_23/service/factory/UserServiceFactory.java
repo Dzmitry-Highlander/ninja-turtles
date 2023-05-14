@@ -15,7 +15,7 @@ public class UserServiceFactory {
         if (instance == null)  {
             synchronized (UserServiceFactory.class) {
                 if (instance == null) {
-                    instance =new UserService(UserDaoFactory.getInstance(), UserRoleDaoFactory.getInstance());
+                    instance = new UserService(UserDaoFactory.getInstance(), UserRoleDaoFactory.getInstance());
                 }
             }
         }
