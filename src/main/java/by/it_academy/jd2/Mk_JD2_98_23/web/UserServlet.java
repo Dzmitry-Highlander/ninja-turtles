@@ -47,6 +47,8 @@ public class UserServlet extends HttpServlet {
 
             savedUser.addRole(userService.defaultRole());
             userService.save(savedUser);
+            resp.setStatus(HttpServletResponse.SC_OK);
+            resp.getWriter().write("You were successfully registered!");
             } else {
                 throw new UserCreateException();
             }
