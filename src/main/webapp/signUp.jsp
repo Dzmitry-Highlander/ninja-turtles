@@ -67,9 +67,9 @@
 </div>
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <label class="col-md-4 control-label" for="signUp"></label>
   <div class="col-md-4">
-    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Sign Up</button>
+    <button id="signUp" name="signUp" class="btn btn-primary">Sign Up</button>
   </div>
 </div>
 
