@@ -2,6 +2,7 @@
 
 <html>
 <head>
+    <meta charset="utf-8">
     <title>Authorization</title>
     <style>
         html, body{width:100%; height:100%; margin:0}
