@@ -51,7 +51,7 @@ public class UserServlet extends HttpServlet {
                 throw new UserCreateException();
             }
         } catch (Exception e) {
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "All fields must be filled!");
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
 
             e.printStackTrace();
         }
