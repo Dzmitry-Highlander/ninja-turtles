@@ -28,9 +28,9 @@
 <legend>Authorization</legend>
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Username</label>
+  <label class="col-md-4 control-label" for="username">Username</label>
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" required="">
+  <input id="username" name="username" type="text" placeholder="" class="form-control input-md" required="">
 
   </div>
 </div>
