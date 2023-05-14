@@ -4,4 +4,8 @@ public class LoginException extends Exception {
     public LoginException() {
         super("Invalid username or password!");
     }
+
+    public LoginException(String message) {
+        super(message);
+    }
 }

@@ -33,17 +33,17 @@ public class LoginServlet extends HttpServlet {
 
         try {
         if (Objects.equals(username, "") || Objects.equals(password, "")) {
-            throw new ServletException("Username or password is empty!");
+            throw new LoginException("Username or password is empty!");
         }
         if (user == null) {
-            throw new LoginException();
+            throw new LoginException("Invalid username or password!");
         }
 
         session.setAttribute(USER_SESSION_ATTRIBUTE_NAME, user);
         resp.setStatus(HttpServletResponse.SC_OK);
         resp.getWriter().write("Authorization was successful!");
         } catch (Exception e) {
-            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid username or password!");
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
 
             e.printStackTrace();
         }
