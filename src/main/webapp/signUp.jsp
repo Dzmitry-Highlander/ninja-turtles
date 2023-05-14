@@ -22,7 +22,7 @@
 </head>
 
 <body>
-<form class="form-horizontal">
+<form class="form-horizontal" action="api/login" method="POST">
 <fieldset>
 
 <legend>Authorization</legend>
