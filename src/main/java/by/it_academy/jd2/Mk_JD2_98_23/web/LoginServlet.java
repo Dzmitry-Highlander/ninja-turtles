@@ -41,7 +41,6 @@ public class LoginServlet extends HttpServlet {
 
         session.setAttribute(USER_SESSION_ATTRIBUTE_NAME, user);
         resp.setStatus(HttpServletResponse.SC_OK);
-        resp.getWriter().write("Authorization was successful!");
         } catch (Exception e) {
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
         }
