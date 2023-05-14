@@ -1,7 +1,6 @@
 package by.it_academy.jd2.Mk_JD2_98_23.core.dto;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class UserCreateDTO {
