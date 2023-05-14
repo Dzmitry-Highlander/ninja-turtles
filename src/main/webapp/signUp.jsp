@@ -25,7 +25,6 @@
 <form class="form-horizontal">
 <fieldset>
 
-<!-- Form Name -->
 <legend>Authorization</legend>
 
 <div class="form-group">
