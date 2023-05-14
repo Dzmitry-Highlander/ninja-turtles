@@ -43,7 +43,7 @@ public class UserServlet extends HttpServlet {
             if (!Objects.equals(firstName, "") || !Objects.equals(lastName, "")
                     || !Objects.equals(username, "") || !Objects.equals(password, "")) {
             UserCreateDTO savedUser = new UserCreateDTO(firstName, lastName, username, password,
-                    LocalDate.parse(dateOfBirth), LocalDateTime.now(), new ArrayList<>());
+                    LocalDate.parse(dateOfBirth), new ArrayList<>());
 
             savedUser.addRole(userService.defaultRole());
             userService.save(savedUser);

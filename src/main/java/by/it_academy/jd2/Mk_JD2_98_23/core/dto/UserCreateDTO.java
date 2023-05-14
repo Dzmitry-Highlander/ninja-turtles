@@ -10,17 +10,15 @@ public class UserCreateDTO {
     private String username;
     private String password;
     private LocalDate dateOfBirth;
-    private LocalDateTime registrationDate;
     private ArrayList<UserRoleDTO> roles;
 
     public UserCreateDTO(String firstName, String lastName, String username, String password,
-                         LocalDate dateOfBirth, LocalDateTime registrationDate, ArrayList<UserRoleDTO> role) {
+                         LocalDate dateOfBirth, ArrayList<UserRoleDTO> role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
-        this.registrationDate = registrationDate;
         this.roles = role;
     }
 
@@ -64,13 +62,6 @@ public class UserCreateDTO {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public LocalDateTime getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setRegistrationDate(LocalDateTime registrationDate) {
-        this.registrationDate = registrationDate;
-    }
 
     public ArrayList<UserRoleDTO> getRoles() {
         return roles;
