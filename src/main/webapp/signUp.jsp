@@ -10,7 +10,7 @@
         .form-horizontal{
             position:absolute;
             width:200px;
-            height:500px;
+            height:320px;
             left:50%;
             top:50%;
             margin-left:-100px;
