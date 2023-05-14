@@ -61,7 +61,6 @@ public class UserCreateDTO {
         this.dateOfBirth = dateOfBirth;
     }
 
-
     public ArrayList<UserRoleDTO> getRoles() {
         return roles;
     }
