@@ -21,12 +21,12 @@
         </style>
 </head>
 
-<form class="form-horizontal">
+<form class="form-horizontal" action="api/user" method="POST">
 <fieldset>
 
 <legend>Registration</legend>
 
-<div class="form-group" action="api/user" method="POST">
+<div class="form-group">
   <label class="col-md-4 control-label" for="firstName">First Name</label>
   <div class="col-md-4">
   <input id="firstName" name="firstName" type="text" placeholder="" class="form-control input-md" required="">
@@ -62,7 +62,7 @@
   <label class="col-md-4 control-label" for="dateOfBirth">Date of Birth</label>
   <div class="col-md-4">
   <input id="dateOfBirth" name="dateOfBirth" type="text" placeholder="" class="form-control input-md" required="">
-  <span class="help-block">Enter your date of birth in XX-XX-XXXX format, for example 01.01.1901</span>
+  <span class="help-block">Enter your date of birth in XXXX-XX-XX format, for example 1901-01-01</span>
   </div>
 </div>
 
