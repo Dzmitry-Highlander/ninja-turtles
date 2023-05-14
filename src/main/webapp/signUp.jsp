@@ -6,7 +6,7 @@
     <title>Authorization</title>
     <style>
         html, body{width:100%; height:100%; margin:0}
-        #action_form{
+        .form-horizontal{
             position:absolute;
             width:200px;
             height:150px;
@@ -15,7 +15,6 @@
             margin-left:-100px;
             margin-top:-100px;
             border:1px solid
-
         }
         form{padding:14px}
         </style>
