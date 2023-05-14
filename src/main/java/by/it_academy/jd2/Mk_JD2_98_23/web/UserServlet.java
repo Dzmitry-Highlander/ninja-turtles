@@ -1,7 +1,6 @@
 package by.it_academy.jd2.Mk_JD2_98_23.web;
 
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.UserCreateDTO;
-import by.it_academy.jd2.Mk_JD2_98_23.core.dto.UserDTO;
 import by.it_academy.jd2.Mk_JD2_98_23.exception.UserCreateException;
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IUserService;
 import by.it_academy.jd2.Mk_JD2_98_23.service.factory.UserServiceFactory;
@@ -13,8 +12,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Objects;
 
