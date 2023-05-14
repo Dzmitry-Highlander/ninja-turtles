@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <form class="form-horizontal">
-<fieldset>
+<field-set>
 
 <!-- Form Name -->
 <legend>Authorization</legend>
@@ -33,5 +33,5 @@
   </div>
 </div>
 
-</fieldset>
+</field-set>
 </form>
