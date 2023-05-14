@@ -9,6 +9,9 @@
 <form class="form-horizontal">
 <fieldset>
 
+<!-- Form Name -->
+<legend>Authorization</legend>
+
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">Username</label>
   <div class="col-md-4">
