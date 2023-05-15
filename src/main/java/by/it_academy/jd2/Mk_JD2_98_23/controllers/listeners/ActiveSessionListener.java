@@ -16,4 +16,7 @@ public class ActiveSessionListener implements HttpSessionListener {
         activeSessions--;
     }
 
+    public int getActiveSessions() {
+        return activeSessions;
+    }
 }
