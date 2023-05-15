@@ -37,15 +37,15 @@
 <table>
     <tr>
         <th>Количество активных сессий:</th>
-        <td>1111111</td>
+        <td>${activeSessions}</td>
     </tr>
     <tr>
         <th>Количество пользователей:</th>
-        <td>222222222</td>
+        <td>${userCount}</td>
     </tr>
     <tr>
         <th>Количество сообщений:</th>
-        <td>3333333333</td>
+        <td>${messageCount}</td>
     </tr>
 </table>
 </body>
