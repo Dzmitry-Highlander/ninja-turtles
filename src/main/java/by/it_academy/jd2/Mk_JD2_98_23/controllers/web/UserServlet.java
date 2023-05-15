@@ -1,7 +1,6 @@
-package by.it_academy.jd2.Mk_JD2_98_23.web;
+package by.it_academy.jd2.Mk_JD2_98_23.controllers.web;
 
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.UserCreateDTO;
-import by.it_academy.jd2.Mk_JD2_98_23.core.dto.UserDTO;
 import by.it_academy.jd2.Mk_JD2_98_23.exception.UserCreateException;
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IUserService;
 import by.it_academy.jd2.Mk_JD2_98_23.service.factory.UserServiceFactory;
@@ -13,8 +12,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -43,20 +40,19 @@ public class UserServlet extends HttpServlet {
             if (!Objects.equals(firstName, "") || !Objects.equals(lastName, "")
                     || !Objects.equals(username, "") || !Objects.equals(password, "")) {
             UserCreateDTO savedUser = new UserCreateDTO(firstName, lastName, username, password,
-                    LocalDate.parse(dateOfBirth), LocalDateTime.now(), new ArrayList<>());
+                    LocalDate.parse(dateOfBirth), new ArrayList<>());
 
             savedUser.addRole(userService.defaultRole());
             userService.save(savedUser);
             resp.setStatus(HttpServletResponse.SC_OK);
-            resp.getWriter().write("You were successfully registered!");
             } else {
                 throw new UserCreateException();
             }
         } catch (Exception e) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
-
-            e.printStackTrace();
         }
+
+        req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 }
 

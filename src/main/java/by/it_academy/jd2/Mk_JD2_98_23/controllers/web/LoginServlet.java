@@ -1,4 +1,4 @@
-package by.it_academy.jd2.Mk_JD2_98_23.web;
+package by.it_academy.jd2.Mk_JD2_98_23.controllers.web;
 
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.UserDTO;
 import by.it_academy.jd2.Mk_JD2_98_23.exception.LoginException;
@@ -41,11 +41,10 @@ public class LoginServlet extends HttpServlet {
 
         session.setAttribute(USER_SESSION_ATTRIBUTE_NAME, user);
         resp.setStatus(HttpServletResponse.SC_OK);
-        resp.getWriter().write("Authorization was successful!");
         } catch (Exception e) {
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
-
-            e.printStackTrace();
         }
+
+        req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 }
