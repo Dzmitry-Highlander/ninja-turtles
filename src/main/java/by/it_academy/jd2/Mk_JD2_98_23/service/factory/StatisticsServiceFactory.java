@@ -1,6 +1,6 @@
 package by.it_academy.jd2.Mk_JD2_98_23.service.factory;
 
-import by.it_academy.jd2.Mk_JD2_98_23.controllers.listeners.ActiveSessionListener;
+import by.it_academy.jd2.Mk_JD2_98_23.controllers.listeners.ActiveSessionsListener;
 import by.it_academy.jd2.Mk_JD2_98_23.dao.memory.factory.MessageDaoFactory;
 import by.it_academy.jd2.Mk_JD2_98_23.dao.memory.factory.UserDaoFactory;
 import by.it_academy.jd2.Mk_JD2_98_23.dao.memory.factory.UserRoleDaoFactory;
@@ -19,7 +19,7 @@ public class StatisticsServiceFactory {
         if (instance == null) {
             synchronized (StatisticsServiceFactory.class) {
                 if (instance == null) {
-                    instance = new StatisticsService(new ActiveSessionListener(), new MessageService(MessageDaoFactory.getInstance()), new UserService(UserDaoFactory.getInstance(), UserRoleDaoFactory.getInstance()));
+                    instance = new StatisticsService(new ActiveSessionsListener(), new MessageService(MessageDaoFactory.getInstance()), new UserService(UserDaoFactory.getInstance(), UserRoleDaoFactory.getInstance()));
                 }
             }
         }
