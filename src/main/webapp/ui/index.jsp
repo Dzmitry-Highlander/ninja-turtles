@@ -12,14 +12,14 @@
     <br>
     <div>
         <label for="signUp">First time here? do:</label><br>
-        <c:url var="signupUrl" value="/ui/user"/>
+        <c:url var="signupUrl" value="/ui/signUp"/>
         <form action="${signupUrl}" method="POST">
             <button type="submit">Sign Up</button>
         </form>
     </div>
     <div>
         <label for="signIn">If not, do:</label><br>
-        <c:url var="signinUrl" value="/ui/login"/>
+        <c:url var="signinUrl" value="/ui/signIn"/>
         <form action="${signinUrl}" method="POST">
             <button type="submit">Sign In</button>
         </form>
