@@ -1,6 +1,5 @@
 package by.it_academy.jd2.Mk_JD2_98_23.controllers.web;
 
-
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IStatisticsService;
 import by.it_academy.jd2.Mk_JD2_98_23.service.factory.StatisticsServiceFactory;
 import jakarta.servlet.ServletException;
@@ -9,7 +8,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/api/admin/statistics")
 public class StatisticsServlet extends HttpServlet {
@@ -21,5 +19,9 @@ public class StatisticsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute("activeSessions", statisticsService.getActiveSessions());
+        req.setAttribute("userCount", statisticsService.getUserCount());
+        req.setAttribute("messageCount", statisticsService.getMessageCount());
+        req.getRequestDispatcher("/ui/admin/statistics.jsp").forward(req, resp);
     }
 }
