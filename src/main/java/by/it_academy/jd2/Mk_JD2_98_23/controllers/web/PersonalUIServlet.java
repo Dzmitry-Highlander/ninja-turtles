@@ -33,6 +33,7 @@ public class PersonalUIServlet extends HttpServlet {
         }
         if (user != null) {
             List<UserDTO> users = userService.get();
+            users.remove(user);
             req.setAttribute("user", user);
             req.setAttribute("users", users);
             req.getRequestDispatcher("/ui/personal.jsp").forward(req, resp);
