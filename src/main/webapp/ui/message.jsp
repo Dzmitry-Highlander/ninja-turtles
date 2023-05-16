@@ -20,7 +20,7 @@
 <jsp:include page="header.jsp" />
 
 <c:if test="${not empty user}">
-    <h2>Отправить сообщение</h2>
+    <a href="${pageContext.request.contextPath}/ui/personal" class="back-button">Назад</a>
     <form method="post" action="${pageContext.request.contextPath}/api/message" class="message-form">
         <label for="to">Кому:</label>
         <select id="to" name="to" required>
