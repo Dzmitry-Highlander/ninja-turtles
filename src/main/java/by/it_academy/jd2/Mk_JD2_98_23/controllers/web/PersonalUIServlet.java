@@ -17,13 +17,27 @@ public class PersonalUIServlet extends HttpServlet {
     private static final String USER_SESSION_ATTRIBUTE_NAME = "user";
     private UserService userService = (UserService) UserServiceFactory.getInstance();
 
-    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
-        UserDTO user = (UserDTO) session.getAttribute(USER_SESSION_ATTRIBUTE_NAME);
-        List<UserDTO> users = userService.get();
-        req.setAttribute("user", user);
-        req.setAttribute("users", users);
-        req.getRequestDispatcher("/ui/personal.jsp").forward(req, resp);
+        UserDTO user = null;
+
+        if (req.getParameter("registered") != null) {
+            req.setAttribute("successMessage", "Добро пожаловать, вы зарегистрировались успешно!");
+        }
+
+        if (session != null) {
+            Object userObj = session.getAttribute(USER_SESSION_ATTRIBUTE_NAME);
+            if (userObj instanceof UserDTO) {
+                user = (UserDTO) userObj;
+            }
+        }
+        if (user != null) {
+            List<UserDTO> users = userService.get();
+            req.setAttribute("user", user);
+            req.setAttribute("users", users);
+            req.getRequestDispatcher("/ui/personal.jsp").forward(req, resp);
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/ui/");
+        }
     }
 }
