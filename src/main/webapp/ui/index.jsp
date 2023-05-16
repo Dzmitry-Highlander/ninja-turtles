@@ -13,16 +13,16 @@
 </c:if>
 <c:if test="${empty sessionScope.user}">
     <fieldset>
-        <legend>Welcome Aboard!</legend>
+        <legend>Добропожаловать в чат истинных Нииииндзя!</legend>
         <br>
-        <div><label for="signUp">First time here? do:</label><br> <c:url var="signupUrl" value="/ui/signUp"/>
-            <form action="${signupUrl}" method="POST">
-                <button type="submit">Sign Up</button>
+        <div><label for="signIn">Скажи Друг - и войди!:</label><br> <c:url var="signinUrl" value="/ui/signIn"/>
+            <form action="${signinUrl}" method="POST">
+                <button type="submit">туды</button>
             </form>
         </div>
-        <div><label for="signIn">If not, do:</label><br> <c:url var="signinUrl" value="/ui/signIn"/>
-            <form action="${signinUrl}" method="POST">
-                <button type="submit">Sign In</button>
+        <div><label for="signUp">Регистрация:</label><br> <c:url var="signupUrl" value="/ui/signUp"/>
+            <form action="${signupUrl}" method="POST">
+                <button type="submit">сюды</button>
             </form>
         </div>
     </fieldset>
