@@ -16,6 +16,9 @@
 </head>
 <body>
 <h1>Личный кабинет</h1>
+<c:if test="${not empty successMessage}">
+    <p>${successMessage}</p>
+</c:if>
 <p>Добро пожаловать, <c:out value="${user.userName}"/>!</p>
 <nav>
     <ul>
