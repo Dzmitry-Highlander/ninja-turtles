@@ -26,7 +26,7 @@
         <select id="to" name="to" required>
             <option value="">Выберите получателя</option>
             <c:forEach items="${users}" var="recipient">
-                <option value="${recipient.userName}">${recipient.userName}</option>
+                <option value="${recipient.userName}"<c:if test="${recipient.userName == param.to}"> selected</c:if>>${recipient.userName}</option>
             </c:forEach>
         </select>
 
