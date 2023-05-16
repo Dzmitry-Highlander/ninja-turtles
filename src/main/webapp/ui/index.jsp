@@ -8,7 +8,7 @@
 <head><title>Registration</title></head>
 <body>
 <c:if test="${not empty sessionScope.user and not empty sessionScope.user.userName}">
-    <h2>Вы уже вошли в систему как ${sessionScope.user.userName}.</h2>
+    <h2>Вы уже находитесь в системе как ${sessionScope.user.userName}.</h2>
     <jsp:include page="/ui/personal.jsp"/>
 </c:if>
 <c:if test="${empty sessionScope.user}">
