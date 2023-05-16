@@ -7,6 +7,8 @@ import by.it_academy.jd2.Mk_JD2_98_23.dao.api.IUserDao;
 import by.it_academy.jd2.Mk_JD2_98_23.dao.api.IUserRoleDao;
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IUserService;
 
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -57,6 +59,7 @@ public class UserService implements IUserService {
 
     @Override
     public UserDTO save(UserCreateDTO item) {
+        validate(item);
         int maxCurrentId = this.get()
                 .stream()
                 .mapToInt(UserDTO::getId)
@@ -115,5 +118,33 @@ public class UserService implements IUserService {
     @Override
     public UserRoleDTO defaultRole() {
         return userRoleDao.get(1);
+    }
+
+    private void validate(UserCreateDTO createDTO) {
+
+        if (createDTO.getFirstName().length() > 30) {
+            throw new IllegalArgumentException("Превышена длина имени");
+        }
+
+        if (createDTO.getLastName().length() > 30) {
+            throw new IllegalArgumentException("Превышена длина фамилии");
+        }
+
+        if (createDTO.getUserName().length() > 30) {
+            throw new IllegalArgumentException("Превышена длина логина");
+        }
+
+        if (!createDTO.getPassword().matches("(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)[A-Za-z\\d]{6,}")) {
+            throw new IllegalArgumentException("Пароль должен иметь одну прописную, одну строчную букву,одну цифру,\n" +
+                    " так же не допускается кириллица. Минимальная длина - 6");
+        }
+
+        if (createDTO.getDateOfBirth().isBefore(LocalDate.of(1923, 1, 1))) {
+            throw new DateTimeException("Введите дату рождения");
+        }
+
+        if (createDTO.getDateOfBirth().isAfter(LocalDate.now())) {
+            throw new DateTimeException("Введите дату рождения");
+        }
     }
 }
