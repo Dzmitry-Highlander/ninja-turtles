@@ -22,7 +22,7 @@ public class PersonalUIServlet extends HttpServlet {
         UserDTO user = null;
 
         if (req.getParameter("registered") != null) {
-            req.setAttribute("successMessage", "Добро пожаловать, вы зарегистрировались успешно!");
+            req.setAttribute("successMessage", "Вы зарегистрированы");
         }
 
         if (session != null) {

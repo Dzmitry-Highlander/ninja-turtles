@@ -19,6 +19,9 @@
 <jsp:include page="header.jsp" />
 <main>
     <h2>Добро пожаловать, <c:out value="${user.userName}"/>!</h2>
+    <c:if test="${not empty successMessage}">
+        <p>${successMessage}</p>
+    </c:if>
     <c:if test="${not empty users}">
         <h3>Пользователи в системе</h3>
         <table>
