@@ -6,7 +6,7 @@
 <head>
     <title>Sign Up</title></head>
 <body><h1>Sign Up</h1>
-<form action="${pageContext.request.contextPath}/api/user" method="POST"><p><label for="firstName">First Name:</label>
+<form action="${pageContext.request.contextPath}/api/login" method="POST"><p><label for="firstName">First Name:</label>
     <input type="text" id="firstName" name="firstName" required></p>
     <p><label for="lastName">Last Name:</label> <input type="text" id="lastName" name="lastName" required></p>
     <p><label for="username">Username:</label> <input type="text" id="username" name="username" required></p>
