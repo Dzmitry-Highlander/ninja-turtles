@@ -1,31 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <html>
-<head><title>Registration</title></head>
+<head>
+    <meta charset="UTF-8">
+    <title>Вход и регистрация</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/ui/css/style.css">
+</head>
 <body>
-<c:if test="${not empty sessionScope.user and not empty sessionScope.user.userName}">
-    <h2>Вы уже находитесь в системе как ${sessionScope.user.userName}.</h2>
-    <jsp:include page="/ui/personal.jsp"/>
-</c:if>
-<c:if test="${empty sessionScope.user}">
-    <fieldset>
-        <legend>Добропожаловать в чат истинных Нииииндзя!</legend>
-        <br>
-        <div><label for="signIn">Скажи Друг - и войди!:</label><br> <c:url var="signinUrl" value="/ui/signIn"/>
-            <form action="${signinUrl}" method="POST">
-                <button type="submit">туды</button>
-            </form>
-        </div>
-        <div><label for="signUp">Регистрация:</label><br> <c:url var="signupUrl" value="/ui/signUp"/>
-            <form action="${signupUrl}" method="POST">
-                <button type="submit">сюды</button>
-            </form>
-        </div>
-    </fieldset>
-</c:if>
+<c:choose>
+    <c:when test="${not empty user}">
+        <jsp:include page="personal.jsp" />
+    </c:when>
+    <c:otherwise>
+        <jsp:include page="header.jsp" />
+        <main>
+            <div class="welcome">
+                <h2>Добро пожаловать в чат истинных Нииииндзя!</h2>
+                <p>Ниндзя - это не просто профессия, это образ жизни. Ведь когда ты ниндзя, ты всегда настоящий, всегда готов к
+                    действию и всегда в тени. Присоединяйтесь к нам и станьте частью этого удивительного мира!</p>
+                <div class="login-buttons">
+                    <form id="signInForm" method="post" action="${pageContext.request.contextPath}/ui/signIn">
+                        <a class="login-link" href="#" onclick="document.getElementById('signInForm').submit(); return false;">Войдите</a>
+                    </form>
+                    <p class="or">или</p>
+                    <form id="signUpForm" method="post" action="${pageContext.request.contextPath}/ui/signUp">
+                        <a class="login-link" href="#" onclick="document.getElementById('signUpForm').submit(); return false;">Зарегистрируйтесь</a>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <footer>
+            &copy; 2023 ninja-turtles, Inc.
+        </footer>
+    </c:otherwise>
+</c:choose>
 </body>
 </html>
