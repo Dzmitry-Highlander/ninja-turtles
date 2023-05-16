@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Личный кабинет</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/ui/css/style.css"">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/ui/css/style.css">
     <style>
         body {
             background-color: #f8f8f8;
