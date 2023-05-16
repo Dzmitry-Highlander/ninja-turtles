@@ -25,6 +25,16 @@ public class UserMemoryDao implements IUserDao {
 
             users.put(dto.getId(), dto);
         }
+        {
+            UserDTO dto = new UserDTO(3, "друг", "друг", "друг", "друг", LocalDate.now(), LocalDateTime.now(), new ArrayList<>());
+
+            users.put(dto.getId(), dto);
+        }
+        {
+            UserDTO dto = new UserDTO(4, "friend", "friend", "friend", "friend", LocalDate.now(), LocalDateTime.now(), new ArrayList<>());
+
+            users.put(dto.getId(), dto);
+        }
     }
 
     @Override
