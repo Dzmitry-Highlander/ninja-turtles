@@ -9,7 +9,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -52,7 +51,7 @@ public class UserServlet extends HttpServlet {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
         }
 
-        req.getRequestDispatcher("/index.jsp").forward(req, resp);
+        req.getRequestDispatcher("/ui/index.jsp").forward(req, resp);
     }
 }
 
