@@ -74,14 +74,7 @@ public class MessageServlet extends HttpServlet {
         messageService.save(messageToSave);
 
         resp.setStatus(HttpServletResponse.SC_CREATED); // HTTP status 201
-        resp.getWriter().write("");
-
-        DateTimeFormatter dTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
-        for (MessageDTO message : messageService.get()) {
-            String fDateTime = message.getDateTime().format(dTimeFormatter);
-            resp.getWriter().write("Text: " + message.getText() + ", From: " + message.getFrom() + ", To: " + message.getTo() + ",  DateTime: " + fDateTime);
-            resp.getWriter().write("\n");
-        }
+        resp.sendRedirect(req.getContextPath() + "/ui/user/message");
     }
 }
 
