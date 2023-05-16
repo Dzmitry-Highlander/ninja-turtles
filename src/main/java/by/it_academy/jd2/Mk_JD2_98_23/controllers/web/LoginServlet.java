@@ -45,6 +45,6 @@ public class LoginServlet extends HttpServlet {
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
         }
 
-        req.getRequestDispatcher("/index.jsp").forward(req, resp);
+        resp.sendRedirect(req.getContextPath() + "/ui/");
     }
 }
