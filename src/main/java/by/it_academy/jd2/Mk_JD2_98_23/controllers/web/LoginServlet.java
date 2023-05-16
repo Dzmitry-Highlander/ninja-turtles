@@ -32,19 +32,18 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = req.getSession(true);
 
         try {
-        if (Objects.equals(username, "") || Objects.equals(password, "")) {
-            throw new LoginException("Username or password is empty!");
-        }
-        if (user == null) {
-            throw new LoginException("Invalid username or password!");
-        }
+            if (Objects.equals(username, "") || Objects.equals(password, "")) {
+                throw new LoginException("Username or password is empty!");
+            }
+            if (user == null) {
+                throw new LoginException("Invalid username or password!");
+            }
 
-        session.setAttribute(USER_SESSION_ATTRIBUTE_NAME, user);
-        resp.setStatus(HttpServletResponse.SC_OK);
+            session.setAttribute(USER_SESSION_ATTRIBUTE_NAME, user);
+            resp.setStatus(HttpServletResponse.SC_OK);
+            resp.sendRedirect(req.getContextPath() + "/ui/");
         } catch (Exception e) {
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
         }
-
-        resp.sendRedirect(req.getContextPath() + "/ui/");
     }
 }
