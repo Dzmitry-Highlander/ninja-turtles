@@ -16,8 +16,12 @@ public class UserMemoryDao implements IUserDao {
 
     public UserMemoryDao() {
         {
-            UserDTO dto = new UserDTO(1, "admin", "admin", "admin", "admin",
-                    LocalDate.now(), LocalDateTime.now(), new ArrayList<>());
+            UserDTO dto = new UserDTO(1, "admin", "admin", "admin", "admin", LocalDate.now(), LocalDateTime.now(), new ArrayList<>());
+
+            users.put(dto.getId(), dto);
+        }
+        {
+            UserDTO dto = new UserDTO(2, "user", "user", "user", "user", LocalDate.now(), LocalDateTime.now(), new ArrayList<>());
 
             users.put(dto.getId(), dto);
         }
