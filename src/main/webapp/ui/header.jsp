@@ -17,7 +17,7 @@
 <c:if test="${not empty user}">
   <nav>
     <ul>
-      <li><a class="button" href="${pageContext.request.contextPath}/ui/user/message?to=${user.userName}">Отправить сообщение</a></li>
+      <li><a class="button" href="${pageContext.request.contextPath}/ui/user/message">Отправить сообщение</a></li>
       <li><a class="button" href="${pageContext.request.contextPath}/ui/user/messages">Просмотреть все свои сообщения</a></li>
       <li><a class="button" href="${pageContext.request.contextPath}/ui/logout.jsp">Выход</a></li>
     </ul>
