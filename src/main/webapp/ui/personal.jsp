@@ -35,7 +35,7 @@
             <c:forEach items="${users}" var="u">
                 <tr>
                     <td><c:out value="${u.userName}"/></td>
-                    <td><a class="button" href="/ui/user/message?to=${u.userName}">Отправить сообщение</a></td>
+                    <td><a class="button" href="${pageContext.request.contextPath}/ui/user/message?to=${u.userName}">Отправить сообщение</a></td>
                 </tr>
             </c:forEach>
             </tbody>
