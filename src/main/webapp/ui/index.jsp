@@ -9,13 +9,25 @@
     <title>Вход и регистрация</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/ui/css/style.css">
 </head>
+<style>
+    img {
+        width: 100%;
+        max-width: 100%;
+    }
+</style>
 <body>
 <c:choose>
     <c:when test="${not empty user}">
-        <jsp:include page="personal.jsp" />
+        <jsp:include page="header.jsp" />
+        <div class="container">
+            <img src="${pageContext.request.contextPath}/ui/images/homeImage1.jpg" alt="ninjaTurtles">
+        </div>
     </c:when>
     <c:otherwise>
         <jsp:include page="header.jsp" />
+        <div class="container">
+            <img src="${pageContext.request.contextPath}/ui/images/homeImage1.jpg" alt="ninjaTurtles">
+        </div>
         <main>
             <div class="welcome">
                 <h2>Добро пожаловать в чат истинных Нииииндзя!</h2>
