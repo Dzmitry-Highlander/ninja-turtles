@@ -41,9 +41,7 @@ public class MessageServlet extends HttpServlet {
 
         List<MessageDTO> userMessages = messageService.getMessagesForUser(currentUser.getId());
 
-        for (MessageDTO userMessage : userMessages) {
-            resp.getWriter().write(userMessage.getText() + "\n");
-        }
+        req.setAttribute("userMessages", userMessages);
     }
 
     @Override
