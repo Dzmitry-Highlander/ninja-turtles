@@ -15,7 +15,7 @@
     <title>Личный кабинет</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/ui/css/style.css">
 </head>
-<jsp:include page="header.jsp" />
+<jsp:include page="../header.jsp" />
 <main>
     <h2>Добро пожаловать, <c:out value="${user.userName}"/>!</h2>
     <c:if test="${not empty successMessage}">
@@ -45,6 +45,6 @@
         </table>
     </c:if>
 </main>
-<jsp:include page="footer.jsp" />
+<jsp:include page="../footer.jsp" />
 </body>
 </html>
