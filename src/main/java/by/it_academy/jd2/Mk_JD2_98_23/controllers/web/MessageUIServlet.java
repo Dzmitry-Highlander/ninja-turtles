@@ -1,6 +1,7 @@
 package by.it_academy.jd2.Mk_JD2_98_23.controllers.web;
 
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.UserDTO;
+import by.it_academy.jd2.Mk_JD2_98_23.service.UserService;
 import by.it_academy.jd2.Mk_JD2_98_23.service.factory.UserServiceFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,7 +16,7 @@ import java.util.List;
 @WebServlet("/ui/user/message")
 public class MessageUIServlet extends HttpServlet {
     private static final String USER_SESSION_ATTRIBUTE_NAME = "user";
-    private UserServiceFactory userService = (UserServiceFactory) UserServiceFactory.getInstance();
+    private UserService userService = (UserService) UserServiceFactory.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
