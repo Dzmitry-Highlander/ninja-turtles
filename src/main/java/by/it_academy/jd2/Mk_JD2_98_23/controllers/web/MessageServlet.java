@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @WebServlet("/api/message")
@@ -41,6 +42,9 @@ public class MessageServlet extends HttpServlet {
 
         List<MessageDTO> userMessages = messageService.getMessagesForUser(currentUser.getId());
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
+
+        req.setAttribute("formatter", formatter);
         req.setAttribute("userMessages", userMessages);
         req.getRequestDispatcher("/ui/user/incoming_messages").forward(req, resp);
     }
