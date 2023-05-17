@@ -16,10 +16,11 @@
         <form method="get" action="${pageContext.request.contextPath}/api/message">
             <input type="submit" value="Обновить"/>
         </form>
+        <c:if test="${not empty userMessages}">
         <c:forEach items="${userMessages}" var="message">
             <div class="message">
                 <p><b>От кого:</b> ${message.from.userName}</p>
-<%--                <p><b>Дата:</b> ${message.dateTime.format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"))}</p>--%>
+                <p><b>Дата:</b> ${message.dateTime != null ? message.dateTime.format(formatter) : ''}</p>
                 <p><b>Текст:</b> ${message.text}</p>
                 <form method="post" action="${pageContext.request.contextPath}/ui/user/message">
                     <input type="hidden" name="to" value="${message.from.userName}"/>
@@ -31,6 +32,7 @@
                 </form>
             </div>
         </c:forEach>
+        </c:if>
     </div>
 </main>
 <jsp:include page="../footer.jsp" />
