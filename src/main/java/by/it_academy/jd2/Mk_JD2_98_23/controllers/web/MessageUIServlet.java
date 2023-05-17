@@ -36,10 +36,14 @@ public class MessageUIServlet extends HttpServlet {
             }
         }
 
-        List<UserDTO> users = userService.get();
-        users.remove(user);
-        req.setAttribute("user", user);
-        req.setAttribute("users", users);
-        req.getRequestDispatcher("/ui/user/message.jsp").forward(req, resp);
+        if (user != null) {
+            List<UserDTO> users = userService.get();
+            users.remove(user);
+            req.setAttribute("user", user);
+            req.setAttribute("users", users);
+            req.getRequestDispatcher("/ui/user/message.jsp").forward(req, resp);
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/ui/");
+        }
     }
 }
