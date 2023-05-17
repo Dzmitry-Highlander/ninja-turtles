@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/ui/css/message.css">
 </head>
 <body>
-<jsp:include page="header.jsp" />
+<jsp:include page="../header.jsp" />
 
 <c:if test="${not empty user}">
     <a href="${pageContext.request.contextPath}/ui/personal" class="back-button">Назад</a>
@@ -37,6 +37,6 @@
     </form>
 </c:if>
 
-<jsp:include page="footer.jsp" />
+<jsp:include page="../footer.jsp" />
 </body>
 </html>
