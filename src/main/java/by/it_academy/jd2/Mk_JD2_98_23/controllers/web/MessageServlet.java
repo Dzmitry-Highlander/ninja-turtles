@@ -34,19 +34,22 @@ public class MessageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
+
         if (session == null || session.getAttribute(USER_SESSION_ATTRIBUTE_NAME) == null) {
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "User not authorized");
             return;
         }
+
         UserDTO currentUser = (UserDTO) session.getAttribute(USER_SESSION_ATTRIBUTE_NAME);
 
         List<MessageDTO> userMessages = messageService.getMessagesForUser(currentUser.getId());
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
 
-        req.setAttribute("formatter", formatter);
-        req.setAttribute("userMessages", userMessages);
-        req.getRequestDispatcher("/ui/user/incoming_messages").forward(req, resp);
+        session.setAttribute("formatter", formatter);
+        session.setAttribute("userMessages", userMessages);
+
+        resp.sendRedirect(req.getContextPath() + "/ui/user/chats");
     }
 
     @Override
