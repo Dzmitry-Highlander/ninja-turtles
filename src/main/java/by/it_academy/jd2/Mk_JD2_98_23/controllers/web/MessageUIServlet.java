@@ -40,6 +40,6 @@ public class MessageUIServlet extends HttpServlet {
         users.remove(user);
         req.setAttribute("user", user);
         req.setAttribute("users", users);
-        req.getRequestDispatcher("/ui/message.jsp").forward(req, resp);
+        req.getRequestDispatcher("/ui/user/message.jsp").forward(req, resp);
     }
 }
