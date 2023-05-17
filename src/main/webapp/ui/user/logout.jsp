@@ -16,7 +16,7 @@
     <title>Выход</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/ui/css/style.css">
 </head>
-<jsp:include page="header.jsp" />
+<jsp:include page="../header.jsp" />
 <main>
     <h2>Выход</h2>
     <p>Вы уверены, что хотите выйти из системы?</p>
