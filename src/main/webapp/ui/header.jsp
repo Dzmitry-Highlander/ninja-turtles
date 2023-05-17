@@ -15,7 +15,7 @@
         <ul>
             <li><a class="button" href="${pageContext.request.contextPath}/ui/">Home</a></li>
             <li><a class="button" href="${pageContext.request.contextPath}/ui/user/message">Отправить сообщение</a></li>
-            <li><a class="button" href="${pageContext.request.contextPath}/ui/user/messages">Полученные</a></li>
+            <li><a class="button" href="${pageContext.request.contextPath}/ui/user/incoming_messages">Полученные</a></li>
             <li><a class="button" href="${pageContext.request.contextPath}/ui/user/messages">Отправленные</a></li>
             <li><a class="button" href="${pageContext.request.contextPath}/ui/personal">Все пользователи</a></li>
             <li><a class="button" href="${pageContext.request.contextPath}/ui/user/logout.jsp">Выход</a></li>
