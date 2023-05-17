@@ -14,10 +14,13 @@ import java.io.IOException;
 public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession(false);
-        if (session != null) {
-            session.invalidate();
-        }
-        resp.sendRedirect(req.getContextPath() + "/ui/");
+
+        if (req.getParameter("check") == null) {
+            HttpSession session = req.getSession(false);
+            if (session != null) {
+                session.invalidate();
+            }
+            resp.sendRedirect(req.getContextPath() + "/ui/");
+        } else req.getRequestDispatcher("/ui/user/logout.jsp").forward(req, resp);
     }
 }
