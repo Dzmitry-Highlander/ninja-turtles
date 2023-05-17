@@ -14,5 +14,4 @@ public class UserRoleCreateDTO {
     public void setName(String name) {
         this.name = name;
     }
-
 }

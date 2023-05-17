@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class UserDTO {
-    private  int id;
+    private int id;
     private String firstName;
     private String lastName;
     private String userName;
@@ -94,4 +94,3 @@ public class UserDTO {
         this.roles = roles;
     }
 }
-

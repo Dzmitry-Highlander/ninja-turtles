@@ -3,7 +3,7 @@ package by.it_academy.jd2.Mk_JD2_98_23.core.dto;
 import java.time.LocalDateTime;
 
 public class MessageDTO {
-    private  int id;
+    private int id;
     private LocalDateTime dateTime;
     private UserDTO from;
     private UserDTO to;

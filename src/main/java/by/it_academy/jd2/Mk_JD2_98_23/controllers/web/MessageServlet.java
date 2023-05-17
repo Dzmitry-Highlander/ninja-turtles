@@ -1,4 +1,4 @@
-package by.it_academy.jd2.Mk_JD2_98_23.web;
+package by.it_academy.jd2.Mk_JD2_98_23.controllers.web;
 
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.MessageCreateDTO;
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.MessageDTO;
@@ -14,7 +14,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @WebServlet("/api/message")
@@ -42,9 +41,8 @@ public class MessageServlet extends HttpServlet {
 
         List<MessageDTO> userMessages = messageService.getMessagesForUser(currentUser.getId());
 
-        for (MessageDTO userMessage : userMessages) {
-            resp.getWriter().write(userMessage.getText() + "\n");
-        }
+        req.setAttribute("userMessages", userMessages);
+        req.getRequestDispatcher("/ui/user/incoming_messages").forward(req, resp);
     }
 
     @Override
@@ -74,14 +72,7 @@ public class MessageServlet extends HttpServlet {
         messageService.save(messageToSave);
 
         resp.setStatus(HttpServletResponse.SC_CREATED); // HTTP status 201
-        resp.getWriter().write("");
-
-        DateTimeFormatter dTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
-        for (MessageDTO message : messageService.get()) {
-            String fDateTime = message.getDateTime().format(dTimeFormatter);
-            resp.getWriter().write("Text: " + message.getText() + ", From: " + message.getFrom() + ", To: " + message.getTo() + ",  DateTime: " + fDateTime);
-            resp.getWriter().write("\n");
-        }
+        resp.sendRedirect(req.getContextPath() + "/ui/user/message");
     }
 }
 

@@ -1,4 +1,4 @@
-package by.it_academy.jd2.Mk_JD2_98_23.web;
+package by.it_academy.jd2.Mk_JD2_98_23.controllers.web;
 
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.UserCreateDTO;
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.UserDTO;
@@ -10,11 +10,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -40,22 +38,29 @@ public class UserServlet extends HttpServlet {
         String dateOfBirth = req.getParameter(DATE_OF_BIRTH_PARAM_NAME);
 
         try {
-            if (!Objects.equals(firstName, "") || !Objects.equals(lastName, "")
-                    || !Objects.equals(username, "") || !Objects.equals(password, "")) {
-            UserCreateDTO savedUser = new UserCreateDTO(firstName, lastName, username, password,
-                    LocalDate.parse(dateOfBirth), LocalDateTime.now(), new ArrayList<>());
+            if (!Objects.equals(firstName, "") && !Objects.equals(lastName, "")
+                    && !Objects.equals(username, "") && !Objects.equals(password, "")) {
+                UserCreateDTO savedUser = new UserCreateDTO(firstName, lastName, username, password,
+                        LocalDate.parse(dateOfBirth), new ArrayList<>());
 
-            savedUser.addRole(userService.defaultRole());
-            userService.save(savedUser);
-            resp.setStatus(HttpServletResponse.SC_OK);
-            resp.getWriter().write("You were successfully registered!");
+                savedUser.addRole(userService.defaultRole());
+                userService.save(savedUser);
+
+                UserDTO user = userService.validate(username, password);
+
+                HttpSession session = req.getSession(true);
+                session.setAttribute("user", user);
+
+                req.setAttribute("registered", true);
+                resp.setHeader("Refresh", "5; URL=" + req.getContextPath() + "/ui/personal");
+                resp.sendRedirect(req.getContextPath() + "/ui/personal?registered=true");
+
+
             } else {
                 throw new UserCreateException();
             }
         } catch (Exception e) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
-
-            e.printStackTrace();
         }
     }
 }

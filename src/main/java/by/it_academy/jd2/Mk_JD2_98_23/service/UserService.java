@@ -83,7 +83,7 @@ public class UserService implements IUserService {
 
     @Override
     public void removeRole(int userId, int roleId) {
-    userDao.removeRole(userId,roleId);
+        userDao.removeRole(userId,roleId);
     }
 
     @Override

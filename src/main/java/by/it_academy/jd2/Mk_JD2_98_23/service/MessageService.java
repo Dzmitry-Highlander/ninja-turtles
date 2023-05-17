@@ -6,11 +6,8 @@ import by.it_academy.jd2.Mk_JD2_98_23.core.dto.UserDTO;
 import by.it_academy.jd2.Mk_JD2_98_23.dao.api.IMessageDao;
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IMessageService;
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IUserService;
-
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.OptionalInt;
+import java.util.*;
 
 public class MessageService implements IMessageService {
     private final IMessageDao messageDao;
@@ -69,5 +66,29 @@ public class MessageService implements IMessageService {
         }
 
         return messages;
+    }
+
+    @Override
+    public List<MessageDTO> getMessagesForUsers(int currentUserId, int recipientUserId) {
+        UserDTO currentUser = userService.get(currentUserId);
+        UserDTO recipientUser = userService.get(recipientUserId);
+
+        if (currentUser == null || recipientUser == null) {
+            return Collections.emptyList();
+        }
+
+        List<MessageDTO> allMessages = messageDao.get();
+        List<MessageDTO> filteredMessages = new ArrayList<>();
+
+        for (MessageDTO message : allMessages) {
+            if ((message.getFrom().getId() == currentUserId && message.getTo().getId() == recipientUserId) ||
+                    (message.getFrom().getId() == recipientUserId && message.getTo().getId() == currentUserId)) {
+                filteredMessages.add(message);
+            }
+        }
+
+        Collections.sort(filteredMessages, Comparator.comparing(MessageDTO::getDateTime));
+
+        return filteredMessages;
     }
 }

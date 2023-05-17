@@ -13,7 +13,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.tomcat.url>http://192.168.1.100:3333/manager/text</maven.tomcat.url>
+        <maven.tomcat.url>http://localhost:8081/manager/text</maven.tomcat.url>
         <maven.tomcat.server>TomcatServer8</maven.tomcat.server>
         <maven.tomcat.path>/${project.build.finalName}</maven.tomcat.path>
     </properties>
@@ -72,6 +72,13 @@
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
+                <configuration>
+                    <url>http://localhost:8081/manager/text</url>
+                    <server>tomcatserver</server>
+                    <path>/chat</path>
+                    <username>tomcat</username>
+                    <password>tomcat</password>
+                </configuration>
             </plugin>
         </plugins>
     </build>

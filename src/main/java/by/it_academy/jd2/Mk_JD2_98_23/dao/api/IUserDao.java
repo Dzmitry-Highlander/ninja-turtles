@@ -9,5 +9,4 @@ public interface IUserDao extends ICRUDDao<UserDTO> {
     void addRole(int userId, UserRoleDTO role);
 
     void removeRole(int userId, int roleId);
-
 }
