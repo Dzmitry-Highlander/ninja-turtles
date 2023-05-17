@@ -59,8 +59,9 @@ public class MessageService implements IMessageService {
         if (user == null) {
             return messages;
         }
+
         for (MessageDTO message : allMessages) {
-            if (message.getFrom().equals(user) || message.getTo().equals(user)) {
+            if (message.getTo().getId() == userId) {
                 messages.add(message);
             }
         }
