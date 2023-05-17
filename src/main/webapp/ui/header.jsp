@@ -18,7 +18,7 @@
             <li><a class="button" href="${pageContext.request.contextPath}/ui/user/messages">Полученные</a></li>
             <li><a class="button" href="${pageContext.request.contextPath}/ui/user/messages">Отправленные</a></li>
             <li><a class="button" href="${pageContext.request.contextPath}/ui/personal">Все пользователи</a></li>
-            <li><a class="button" href="${pageContext.request.contextPath}/ui/logout.jsp">Выход</a></li>
+            <li><a class="button" href="${pageContext.request.contextPath}/ui/user/logout.jsp">Выход</a></li>
         </ul>
     </nav>
 </c:if></body>
