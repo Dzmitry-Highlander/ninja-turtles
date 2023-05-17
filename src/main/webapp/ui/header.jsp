@@ -15,11 +15,16 @@
         <ul>
             <li><a class="button" href="${pageContext.request.contextPath}/ui/">Home</a></li>
             <li><a class="button" href="${pageContext.request.contextPath}/ui/user/message">Отправить сообщение</a></li>
-            <li><a class="button" href="${pageContext.request.contextPath}/ui/user/incoming_messages">Полученные</a></li>
-            <li><a class="button" href="${pageContext.request.contextPath}/ui/user/messages">Отправленные</a></li>
+            <li>
+                <form method="get" action="${pageContext.request.contextPath}/api/message">
+                    <a class="button" href="${pageContext.request.contextPath}/api/message">Полученные</a>
+                </form>
+            </li>
+            <li><a class="button" href="${pageContext.request.contextPath}/api/message">Отправленные</a></li>
             <li><a class="button" href="${pageContext.request.contextPath}/ui/personal">Все пользователи</a></li>
-            <li><a class="button" href="${pageContext.request.contextPath}/ui/user/logout.jsp">Выход</a></li>
+            <li><a class="button" href="${pageContext.request.contextPath}/ui/logout?check=exit">Выход</a></li>
         </ul>
     </nav>
 </c:if></body>
 </html>
+
