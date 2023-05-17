@@ -42,6 +42,7 @@ public class MessageServlet extends HttpServlet {
         List<MessageDTO> userMessages = messageService.getMessagesForUser(currentUser.getId());
 
         req.setAttribute("userMessages", userMessages);
+        req.getRequestDispatcher("/ui/user/incoming_messages").forward(req, resp);
     }
 
     @Override
