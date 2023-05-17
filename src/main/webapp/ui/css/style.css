@@ -170,3 +170,18 @@ footer {
     text-shadow: 1px 1px #ccc;
     font-family: 'Ninja Naruto', cursive;
 }
+
+header h1 a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header h2 a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
