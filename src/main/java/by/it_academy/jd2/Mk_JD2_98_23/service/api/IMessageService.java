@@ -12,4 +12,6 @@ public interface IMessageService extends ICRUDService<MessageDTO, MessageCreateD
     void setService(IUserService userService);
 
     List<MessageDTO> getMessagesForUsers(int currentUserId, int recipientUserId);
+
+    void delete(int id);
 }

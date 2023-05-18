@@ -2,7 +2,6 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -15,8 +14,8 @@
     <p>Вы уверены, что хотите выйти из системы?</p>
     <form id="logout-form" method="GET" action="${pageContext.request.contextPath}/ui/user/logout">
         <input type="hidden" name="_csrf" value="${pageContext.request.getAttribute("_csrf")}"/>
-        <button class="button" type="submit">Да, выйти</button>
-        <button class="button" type="button" onclick="history.back();">Нет, остаться</button>
+        <button class="top-button" type="submit">Да, выйти</button>
+        <button class="top-button" type="button" onclick="history.back();">Нет, остаться</button>
     </form>
 </main>
 <jsp:include page="../footer.jsp" />
