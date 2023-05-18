@@ -18,7 +18,7 @@
             <li><a class="button" href="${pageContext.request.contextPath}/api/message">Полученные</a></li>
             <li><a class="button" href="${pageContext.request.contextPath}/api/message?param=out">Отправленные</a></li>
             <li><a class="button" href="${pageContext.request.contextPath}/ui/user">Все пользователи</a></li>
-            <li><a class="button" href="${pageContext.request.contextPath}/ui/logout?check=exit">Выход</a></li>
+            <li><a class="button" href="${pageContext.request.contextPath}/ui/user/logout?check=exit">Выход</a></li>
         </ul>
     </nav>
 </c:if></body>
