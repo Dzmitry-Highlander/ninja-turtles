@@ -38,16 +38,16 @@ public class MessageServlet extends HttpServlet {
         UserDTO currentUser = (UserDTO) session.getAttribute(USER_SESSION_ATTRIBUTE_NAME);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
 
-        if (req.getParameter("param") == null) {
-            List<MessageDTO> userMessages = messageService.getMessagesForUser(currentUser.getId());
-            session.setAttribute("formatter", formatter);
-            session.setAttribute("userMessages", userMessages);
-            resp.sendRedirect(req.getContextPath() + "/ui/user/chats");
-        } else {
+        if ("out".equals(req.getParameter("param"))) {
             List<MessageDTO> userMessages = messageService.getMessagesUser(currentUser.getId());
             session.setAttribute("formatter", formatter);
             session.setAttribute("userMessages", userMessages);
             resp.sendRedirect(req.getContextPath() + "/ui/user/chats/out");
+        } else {
+            List<MessageDTO> userMessages = messageService.getMessagesForUser(currentUser.getId());
+            session.setAttribute("formatter", formatter);
+            session.setAttribute("userMessages", userMessages);
+            resp.sendRedirect(req.getContextPath() + "/ui/user/chats");
         }
     }
 
