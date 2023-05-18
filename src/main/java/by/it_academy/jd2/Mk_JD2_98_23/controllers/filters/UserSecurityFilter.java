@@ -19,7 +19,7 @@ public class UserSecurityFilter implements Filter {
         if ((session != null) && (session.getAttribute("user") != null)) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
-            res.sendRedirect(contextPath + "/signIn");
+            res.sendRedirect(contextPath + "/ui/signIn");
         }
     }
 }
