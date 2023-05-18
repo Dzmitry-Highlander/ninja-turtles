@@ -34,11 +34,11 @@
                 <p>Ниндзя - это не просто профессия, это образ жизни. Ведь когда ты ниндзя, ты всегда настоящий, всегда готов к
                     действию и всегда в тени. Присоединяйтесь к нам и станьте частью этого удивительного мира!</p>
                 <div class="login-buttons">
-                    <form id="signInForm" method="post" action="${pageContext.request.contextPath}/ui/signIn">
+                    <form id="signInForm" method="get" action="${pageContext.request.contextPath}/ui/signIn">
                         <a class="login-link" href="#" onclick="document.getElementById('signInForm').submit(); return false;">Войдите</a>
                     </form>
                     <p class="or">или</p>
-                    <form id="signUpForm" method="post" action="${pageContext.request.contextPath}/ui/signUp">
+                    <form id="signUpForm" method="get" action="${pageContext.request.contextPath}/ui/signUp">
                         <a class="login-link" href="#" onclick="document.getElementById('signUpForm').submit(); return false;">Зарегистрируйтесь</a>
                     </form>
                 </div>
