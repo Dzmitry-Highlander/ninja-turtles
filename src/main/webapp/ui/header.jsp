@@ -20,7 +20,7 @@
                     <a class="button" href="${pageContext.request.contextPath}/api/message">Полученные</a>
                 </form>
             </li>
-            <li><a class="button" href="${pageContext.request.contextPath}/api/message">Отправленные</a></li>
+            <li><a class="button" href="${pageContext.request.contextPath}/api/message?param=out">Отправленные</a></li>
             <li><a class="button" href="${pageContext.request.contextPath}/ui/personal">Все пользователи</a></li>
             <li><a class="button" href="${pageContext.request.contextPath}/ui/logout?check=exit">Выход</a></li>
         </ul>
