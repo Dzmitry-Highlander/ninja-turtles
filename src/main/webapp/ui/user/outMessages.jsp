@@ -31,20 +31,22 @@
                 <div class="message__actions">
                     <div class="message__form">
                         <form method="post" action="${pageContext.request.contextPath}/ui/user/message" class="form">
-                            <a class="button_as" href="${pageContext.request.contextPath}/ui/user/message?to=${message.to.userName}">
+                            <a class="button_as"
+                               href="${pageContext.request.contextPath}/ui/user/message?to=${message.to.userName}">
                                 Новое сообщение
                             </a>
                         </form>
-                        <form method="post" action="${pageContext.request.contextPath}/api/message/${message.id}"
-                              class="form"><input type="hidden" name="_method" value="DELETE"/>
-                            <button type="submit" class="button_sa">Удалить</button>
-                        </form>
+
+                            <form method="POST"
+                                  action="${pageContext.request.contextPath}/api/message/del/${message.id}"
+                                  class="form"><input type="hidden" name="_method" value="DELETE"/> <input type="hidden" name="messageId" value="${message.id}"/>
+                                <button type="submit" class="button_sa">Удалить</button>
+                            </form>
                     </div>
                 </div>
             </div>
         </c:forEach> </c:if></div>
 </main>
 <jsp:include page="../footer.jsp"/>
-<script src="${pageContext.request.contextPath}/ui/js/messages.js"></script>
 </body>
 </html>
