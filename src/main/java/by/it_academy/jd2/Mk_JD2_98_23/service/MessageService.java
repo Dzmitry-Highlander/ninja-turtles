@@ -70,6 +70,26 @@ public class MessageService implements IMessageService {
     }
 
     @Override
+    public List<MessageDTO> getMessagesUser(int userId) {
+        List<MessageDTO> messages = new ArrayList<>();
+        UserDTO user = userService.get(userId);
+        List<MessageDTO> allMessages = messageDao.get();
+
+        if (user == null) {
+            return messages;
+        }
+
+        for (MessageDTO message : allMessages) {
+            if (message.getFrom().getId() == userId) {
+                messages.add(message);
+            }
+        }
+
+        return messages;
+    }
+
+
+    @Override
     public List<MessageDTO> getMessagesForUsers(int currentUserId, int recipientUserId) {
         UserDTO currentUser = userService.get(currentUserId);
         UserDTO recipientUser = userService.get(recipientUserId);
