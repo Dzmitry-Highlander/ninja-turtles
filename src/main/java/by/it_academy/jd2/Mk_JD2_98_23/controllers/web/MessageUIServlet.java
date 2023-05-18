@@ -24,11 +24,6 @@ public class MessageUIServlet extends HttpServlet {
         HttpSession session = req.getSession(false);
         UserDTO user = null;
 
-        if (session == null || session.getAttribute(USER_SESSION_ATTRIBUTE_NAME) == null) {
-            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "User not authorized");
-            return;
-        }
-
         if (session != null) {
             Object userObj = session.getAttribute(USER_SESSION_ATTRIBUTE_NAME);
             if (userObj instanceof UserDTO) {
