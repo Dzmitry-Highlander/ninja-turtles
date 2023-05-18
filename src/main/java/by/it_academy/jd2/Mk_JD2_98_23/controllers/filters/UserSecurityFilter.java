@@ -9,6 +9,8 @@ import java.io.IOException;
 
 @WebFilter(urlPatterns = {"/ui/user/*", "/api/message"})
 public class UserSecurityFilter implements Filter {
+    private static final String USER_SESSION_ATTRIBUTE_NAME = "user";
+
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
                          FilterChain filterChain) throws IOException, ServletException {
@@ -16,7 +18,7 @@ public class UserSecurityFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) servletResponse;
         String contextPath = req.getContextPath();
         HttpSession session = req.getSession();
-        if ((session != null) && (session.getAttribute("user") != null)) {
+        if ((session != null) && (session.getAttribute(USER_SESSION_ATTRIBUTE_NAME) != null)) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
             res.sendRedirect(contextPath + "/ui/signIn");
