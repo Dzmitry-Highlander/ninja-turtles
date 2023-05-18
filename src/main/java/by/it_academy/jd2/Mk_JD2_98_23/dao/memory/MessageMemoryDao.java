@@ -29,4 +29,9 @@ public class MessageMemoryDao implements IMessageDao {
         this.messages.put(item.getId(), item);
         return item;
     }
+
+    @Override
+    public void delete(int id) {
+        this.messages.remove(id);
+    }
 }

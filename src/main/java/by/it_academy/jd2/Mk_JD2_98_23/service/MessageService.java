@@ -112,4 +112,9 @@ public class MessageService implements IMessageService {
 
         return filteredMessages;
     }
+
+    @Override
+    public void delete(int id) {
+        messageDao.delete(id);
+    }
 }
