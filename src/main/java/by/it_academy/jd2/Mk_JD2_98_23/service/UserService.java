@@ -114,6 +114,6 @@ public class UserService implements IUserService {
 
     @Override
     public UserRoleDTO defaultRole() {
-        return userRoleDao.get(1);
+        return userRoleDao.get(2);
     }
 }

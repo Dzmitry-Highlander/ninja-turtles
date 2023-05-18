@@ -93,5 +93,9 @@ public class UserDTO {
     public void setRoles(ArrayList<UserRoleDTO> roles) {
         this.roles = roles;
     }
+
+    public boolean isAdmin() {
+        return roles.stream().anyMatch(role -> "ADMIN".equals(role.getName()));
+    }
 }
 

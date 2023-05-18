@@ -29,5 +29,4 @@ public class UserRoleDTO {
         this.name = name;
     }
 
-
 }

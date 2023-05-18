@@ -29,22 +29,22 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter(USERNAME_PARAM_NAME);
         String password = req.getParameter(PASSWORD_PARAM_NAME);
         UserDTO user = userService.validate(username, password);
+        userService.addRole(1,1);
         HttpSession session = req.getSession(true);
 
         try {
-        if (Objects.equals(username, "") || Objects.equals(password, "")) {
-            throw new LoginException("Username or password is empty!");
-        }
-        if (user == null) {
-            throw new LoginException("Invalid username or password!");
-        }
+            if (Objects.equals(username, "") || Objects.equals(password, "")) {
+                throw new LoginException("Username or password is empty!");
+            }
+            if (user == null) {
+                throw new LoginException("Invalid username or password!");
+            }
 
-        session.setAttribute(USER_SESSION_ATTRIBUTE_NAME, user);
-        resp.setStatus(HttpServletResponse.SC_OK);
+            session.setAttribute(USER_SESSION_ATTRIBUTE_NAME, user);
+            resp.setStatus(HttpServletResponse.SC_OK);
+            resp.sendRedirect(req.getContextPath() + "/ui/");
         } catch (Exception e) {
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
         }
-
-        req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 }

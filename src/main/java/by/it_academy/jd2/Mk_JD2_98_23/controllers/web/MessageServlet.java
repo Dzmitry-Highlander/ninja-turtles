@@ -34,26 +34,27 @@ public class MessageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
-        if (session == null || session.getAttribute(USER_SESSION_ATTRIBUTE_NAME) == null) {
-            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "User not authorized");
-            return;
-        }
+
         UserDTO currentUser = (UserDTO) session.getAttribute(USER_SESSION_ATTRIBUTE_NAME);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
 
-        List<MessageDTO> userMessages = messageService.getMessagesForUser(currentUser.getId());
-
-        for (MessageDTO userMessage : userMessages) {
-            resp.getWriter().write(userMessage.getText() + "\n");
+        if (req.getParameter("param") == null) {
+            List<MessageDTO> userMessages = messageService.getMessagesForUser(currentUser.getId());
+            session.setAttribute("formatter", formatter);
+            session.setAttribute("userMessages", userMessages);
+            resp.sendRedirect(req.getContextPath() + "/ui/user/chats");
+        } else {
+            List<MessageDTO> userMessages = messageService.getMessagesUser(currentUser.getId());
+            session.setAttribute("formatter", formatter);
+            session.setAttribute("userMessages", userMessages);
+            resp.sendRedirect(req.getContextPath() + "/ui/user/chats/out");
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
-        if (session == null || session.getAttribute(USER_SESSION_ATTRIBUTE_NAME) == null) {
-            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "User not authorized");
-            return;
-        }
+
         UserDTO currentUser = (UserDTO) session.getAttribute(USER_SESSION_ATTRIBUTE_NAME);
 
         String toUsername = req.getParameter(TO_PARAM_NAME);
@@ -74,14 +75,7 @@ public class MessageServlet extends HttpServlet {
         messageService.save(messageToSave);
 
         resp.setStatus(HttpServletResponse.SC_CREATED); // HTTP status 201
-        resp.getWriter().write("");
-
-        DateTimeFormatter dTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
-        for (MessageDTO message : messageService.get()) {
-            String fDateTime = message.getDateTime().format(dTimeFormatter);
-            resp.getWriter().write("Text: " + message.getText() + ", From: " + message.getFrom() + ", To: " + message.getTo() + ",  DateTime: " + fDateTime);
-            resp.getWriter().write("\n");
-        }
+        resp.sendRedirect(req.getContextPath() + "/ui/user/message");
     }
 }
 

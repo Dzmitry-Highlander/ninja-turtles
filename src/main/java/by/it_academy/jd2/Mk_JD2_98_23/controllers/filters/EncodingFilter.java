@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebFilter("/enc")
+@WebFilter("/ui/*")
 public class EncodingFilter implements Filter {
     private String encoding;
 
