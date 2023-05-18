@@ -9,7 +9,7 @@
 </head>
 <body>
 <header><h1><a href="${pageContext.request.contextPath}/ui/">NinjaChat</a></h1> <c:if test="${not empty user}"><h2>
-    <a href="${pageContext.request.contextPath}/ui/personal"> Мастерская бойца</a></h2></c:if></header>
+    <a href="${pageContext.request.contextPath}/ui/user"> Мастерская бойца</a></h2></c:if></header>
 <c:if test="${not empty user}">
     <nav>
         <ul>
@@ -17,7 +17,7 @@
             <li><a class="button" href="${pageContext.request.contextPath}/ui/user/message">Отправить сообщение</a></li>
             <li><a class="button" href="${pageContext.request.contextPath}/api/message">Полученные</a></li>
             <li><a class="button" href="${pageContext.request.contextPath}/api/message?param=out">Отправленные</a></li>
-            <li><a class="button" href="${pageContext.request.contextPath}/ui/personal">Все пользователи</a></li>
+            <li><a class="button" href="${pageContext.request.contextPath}/ui/user">Все пользователи</a></li>
             <li><a class="button" href="${pageContext.request.contextPath}/ui/logout?check=exit">Выход</a></li>
         </ul>
     </nav>

@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/ui/personal")
+@WebServlet("/ui/user")
 public class PersonalUIServlet extends HttpServlet {
     private static final String USER_SESSION_ATTRIBUTE_NAME = "user";
     private UserService userService = (UserService) UserServiceFactory.getInstance();

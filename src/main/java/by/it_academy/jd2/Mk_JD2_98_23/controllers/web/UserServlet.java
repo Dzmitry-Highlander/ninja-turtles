@@ -52,8 +52,8 @@ public class UserServlet extends HttpServlet {
                 session.setAttribute("user", user);
 
                 req.setAttribute("registered", true);
-                resp.setHeader("Refresh", "5; URL=" + req.getContextPath() + "/ui/personal");
-                resp.sendRedirect(req.getContextPath() + "/ui/personal?registered=true");
+                resp.setHeader("Refresh", "5; URL=" + req.getContextPath() + "/ui/user");
+                resp.sendRedirect(req.getContextPath() + "/ui/user?registered=true");
 
 
             } else {
