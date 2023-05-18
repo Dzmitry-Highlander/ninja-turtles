@@ -168,7 +168,7 @@ footer {
     margin-bottom: 0.5em;
     color: #333;
     text-shadow: 1px 1px #ccc;
-    font-family: 'Ninja Naruto', cursive;
+    font-family: Arial, sans-serif;
 }
 
 header h1 a {
@@ -184,4 +184,29 @@ header h2 a {
 .container {
     max-width: 1200px;
     margin: 0 auto;
+}
+
+main {
+    text-align: center;
+    margin-top: 2cm;
+}
+
+.top-button {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #0A0A0A;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 2px solid #000;
+    transition: all 0.3s ease;
+}
+
+.top-button:hover {
+    background-color: #0A0A0A;
+    color: #fff;
+    cursor: pointer;
 }
