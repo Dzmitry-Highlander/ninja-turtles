@@ -3,18 +3,21 @@
 
 <html>
 <head>
-    <title>Войти</title>
-    <link rel="stylesheet" type="text/css" href="/path/to/style.css">
+    <meta charset="UTF-8">
+    <title>Скажи - друг! И войди.</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/ui/css/styleSignIn.css">
 </head>
 <jsp:include page="header.jsp" />
-<body><h1>Войти</h1>
-<form action="${pageContext.request.contextPath}/api/login" method="POST"><p><label for="username">Username:</label>
-    <input type="text" id="username" name="username" required></p>
-    <p><label for="password">Password:</label> <input type="password" id="password" name="password" required></p>
-    <p>
-        <button type="submit">Отправить</button>
-    </p>
-</form>
+<body>
+<div class="container">
+    <h1>Скажи - друг! И войди.</h1>
+    <form action="${pageContext.request.contextPath}/api/login" method="POST">
+        <label for="username">Имя пользователя:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" required>
+        <button class="back-button"> Войти</button>
+    </form>
+</div>
 <jsp:include page="footer.jsp" />
 </body>
-</html>
