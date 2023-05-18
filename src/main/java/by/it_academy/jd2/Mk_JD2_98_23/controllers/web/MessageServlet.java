@@ -54,10 +54,7 @@ public class MessageServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
-//        if (session == null || session.getAttribute(USER_SESSION_ATTRIBUTE_NAME) == null) {
-//            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "User not authorized");
-//            return;
-//        }
+
         UserDTO currentUser = (UserDTO) session.getAttribute(USER_SESSION_ATTRIBUTE_NAME);
 
         String toUsername = req.getParameter(TO_PARAM_NAME);
