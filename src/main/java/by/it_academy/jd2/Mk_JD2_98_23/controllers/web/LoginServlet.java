@@ -29,6 +29,7 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter(USERNAME_PARAM_NAME);
         String password = req.getParameter(PASSWORD_PARAM_NAME);
         UserDTO user = userService.validate(username, password);
+        userService.addRole(1,1);
         HttpSession session = req.getSession(true);
 
         try {
