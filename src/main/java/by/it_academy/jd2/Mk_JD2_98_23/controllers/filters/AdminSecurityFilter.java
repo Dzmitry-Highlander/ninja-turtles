@@ -24,7 +24,7 @@ public class AdminSecurityFilter implements Filter {
             if (user.isAdmin()) {
                 filterChain.doFilter(servletRequest, servletResponse);
             } else {
-                res.sendRedirect(contextPath + "/ui/");
+                res.sendRedirect(contextPath + "/");
             }
         } else {
             res.sendRedirect(contextPath + "/ui/signIn");

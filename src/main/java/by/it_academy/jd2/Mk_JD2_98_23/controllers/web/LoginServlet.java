@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 
             session.setAttribute(USER_SESSION_ATTRIBUTE_NAME, user);
             resp.setStatus(HttpServletResponse.SC_OK);
-            resp.sendRedirect(req.getContextPath() + "/ui/");
+            resp.sendRedirect(req.getContextPath() + "/");
         } catch (Exception e) {
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
         }

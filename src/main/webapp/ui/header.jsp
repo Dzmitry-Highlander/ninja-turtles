@@ -10,7 +10,7 @@
 </head>
 <body style="position: relative;">
 <header>
-    <h1><a href="${pageContext.request.contextPath}/ui/">NinjaChat</a></h1>
+    <h1><a href="${pageContext.request.contextPath}/">NinjaChat</a></h1>
     <c:if test="${not empty user}">
         <h2><a href="${pageContext.request.contextPath}/ui/user">Мастерская бойца</a></h2>
     </c:if>
@@ -24,7 +24,7 @@
 <c:if test="${not empty user}">
     <nav>
         <ul>
-            <li><a class="button" href="${pageContext.request.contextPath}/ui/">Home</a></li>
+            <li><a class="button" href="${pageContext.request.contextPath}/">Home</a></li>
             <li><a class="button" href="${pageContext.request.contextPath}/ui/user/message">Отправить сообщение</a></li>
             <li><a class="button" href="${pageContext.request.contextPath}/api/message">Полученные</a></li>
             <li><a class="button" href="${pageContext.request.contextPath}/api/message?param=out">Отправленные</a></li>
