@@ -18,13 +18,13 @@
 <body>
 <c:choose>
     <c:when test="${not empty user}">
-        <jsp:include page="header.jsp" />
+        <jsp:include page="ui/header.jsp" />
         <div class="container">
             <img src="${pageContext.request.contextPath}/ui/images/homeImage1.jpg" alt="ninjaTurtles">
         </div>
     </c:when>
     <c:otherwise>
-        <jsp:include page="header.jsp" />
+        <jsp:include page="ui/header.jsp" />
         <div class="container">
             <img src="${pageContext.request.contextPath}/ui/images/homeImage1.jpg" alt="ninjaTurtles">
         </div>

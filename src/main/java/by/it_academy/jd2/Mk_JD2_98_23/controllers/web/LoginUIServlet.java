@@ -17,7 +17,7 @@ public class LoginUIServlet extends HttpServlet {
         HttpSession session = req.getSession();
 
         if ((session != null) && (session.getAttribute(USER_SESSION_ATTRIBUTE_NAME) != null)) {
-            req.getRequestDispatcher("/ui/").forward(req, resp);
+            req.getRequestDispatcher("/").forward(req, resp);
         } else {
             req.getRequestDispatcher("/ui/signIn.jsp").forward(req, resp);
         }

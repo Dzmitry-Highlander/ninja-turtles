@@ -38,7 +38,7 @@ public class PersonalUIServlet extends HttpServlet {
             req.setAttribute("users", users);
             req.getRequestDispatcher("/ui/user/personal.jsp").forward(req, resp);
         } else {
-            resp.sendRedirect(req.getContextPath() + "/ui/");
+            resp.sendRedirect(req.getContextPath() + "/");
         }
     }
 }
